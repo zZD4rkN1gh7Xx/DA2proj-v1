@@ -8,6 +8,7 @@
 #include <vector>
 #include <queue>
 #include <fstream>
+#include "place.h"
 
 using namespace std;
 
@@ -72,7 +73,7 @@ class Graph {
 public:
     Vertex<T> *findVertex(const T &in) const;
     int getNumVertex() const;
-	bool addVertex(const T &in);
+	bool addVertex(Place &in);
 	bool removeVertex(const T &in);
 	bool addEdge(const T &sourc, const T &dest, double w);
 	bool removeEdge(const T &sourc, const T &dest);
@@ -168,7 +169,7 @@ void Edge<T>::setWeight(double weight) {
 template <class T>
 Vertex<T> * Graph<T>::findVertex(const T &in) const {
 	for (auto v : vertexSet)
-		if (v->info == in)
+		if (static_cast<const Place>(static_cast<const Place>(static_cast<const Place>(static_cast<const Place>(v->info)))) == in)
 			return v;
 	return NULL;
 }
@@ -208,7 +209,7 @@ void Vertex<T>::setAdj(const vector<Edge<T>> &adj) {
  *  Returns true if successful, and false if a vertex with that content already exists.
  */
 template <class T>
-bool Graph<T>::addVertex(const T &in) {
+bool Graph<T>::addVertex(Place &in) {
 	if ( findVertex(in) != NULL)
 		return false;
 	vertexSet.push_back(new Vertex<T>(in));

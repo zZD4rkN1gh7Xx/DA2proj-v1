@@ -1,0 +1,27 @@
+//
+// Created by Administrador on 15/05/2024.
+//
+
+#include "connection.h"
+
+Connection::Connection(int id_A, int id_B, long distance)
+{
+    this->id_A = id_A;
+    this->id_B = id_B;
+    this->distance = distance;
+}
+
+int Connection::get_id_A()
+{
+    return this->id_A;
+}
+
+int Connection::get_id_B()
+{
+    return this->id_B;
+}
+
+long Connection::get_distance()
+{
+    return this->distance;
+}

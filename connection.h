@@ -1,0 +1,24 @@
+//
+// Created by Administrador on 15/05/2024.
+//
+
+#ifndef DAPROJ2_V2_CONNECTION_H
+#define DAPROJ2_V2_CONNECTION_H
+
+
+class Connection {
+
+    private:
+        int id_A;
+        int id_B;
+        long distance;
+
+    public:
+        Connection(int id_A, int id_B, long distance);
+        int get_id_A();
+        int get_id_B();
+        long get_distance();
+};
+
+
+#endif //DAPROJ2_V2_CONNECTION_H
