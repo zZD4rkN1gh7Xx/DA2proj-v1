@@ -19,6 +19,7 @@ class Place
     public:
 
         Place();
+        Place(int id);
         Place(int id, std::string name);
         Place(int id, long longitude, long latitude);
         int get_id();

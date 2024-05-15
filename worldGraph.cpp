@@ -35,3 +35,4 @@ Edge<Place> * WorldGraph::get_connection(int id_A, int id_B)
             return k;
     }
 }
+
