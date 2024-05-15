@@ -51,8 +51,8 @@ void FileReaderToy::add_all_toy(const std::string &filename , WorldGraph<int> &O
 				std::cout << "No file to open or wrong path selected for stations!" << std::endl;
 			}
 
-			inputfile.close();
 		}
+		inputfile.close();
 	}
 }
 
@@ -100,8 +100,8 @@ void FileReaderToy::add_all_tourism(const std::string &filename , WorldGraph<int
 				std::cout << "No file to open or wrong path selected for stations!" << std::endl;
 			}
 
-			inputfile.close();
 		}
+		inputfile.close();
 	}
 }
 
