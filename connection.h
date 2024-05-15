@@ -11,10 +11,10 @@ class Connection {
     private:
         int id_A;
         int id_B;
-        long distance;
+        double distance;
 
     public:
-        Connection(int id_A, int id_B, long distance);
+        Connection(int id_A, int id_B, double distance);
         int get_id_A();
         int get_id_B();
         long get_distance();

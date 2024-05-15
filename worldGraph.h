@@ -17,7 +17,7 @@ class WorldGraph :public Graph<Place>
         void add_place(Place& place);
         void add_connection(Connection& connection);
         Place get_place(int id);
-        Connection get_connection(int id_A, int id_B);
+        Edge<Place> * get_connection(int id_A, int id_B);
 
 };
 

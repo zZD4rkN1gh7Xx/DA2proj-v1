@@ -4,7 +4,7 @@
 
 #include "connection.h"
 
-Connection::Connection(int id_A, int id_B, long distance)
+Connection::Connection(int id_A, int id_B, double distance)
 {
     this->id_A = id_A;
     this->id_B = id_B;
