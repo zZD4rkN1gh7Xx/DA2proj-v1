@@ -5,13 +5,16 @@
 #ifndef FILEREADER_H
 #define FILEREADER_H
 #include "Graph.h"
-
+#include "worldGraph.h"
 
 class FileReaderToy {
 
     public:
-        static void add_edges(const std::string &filename , Graph<int> &OurGraph);
-        static void add_nodes(const std::string &filename, Graph<int> &OurGraph);
+        static void add_all_toy(const std::string &filename , WorldGraph &OurGraph);
+        static void add_all_tourism(const std::string &filename , WorldGraph &OurGraph);
+        static void add_all_places_coordinates(const std::string &filename , WorldGraph &OurGraph);
+        static void add_all_connections_coordinates(const std::string &filename , WorldGraph &OurGraph);
+
 };
 
 

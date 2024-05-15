@@ -26,6 +26,7 @@ class Place
         std::string get_name();
         long get_longitude();
         long get_latitude();
+        bool operator==(const Place& other) const;
 
 };
 

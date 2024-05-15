@@ -42,3 +42,7 @@ long Place::get_latitude()
     return this->latitude;
 }
 
+bool Place::operator==(const Place& other) const
+{
+    return this->id == other.id;
+}

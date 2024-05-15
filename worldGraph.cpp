@@ -4,11 +4,13 @@
 
 #include "worldGraph.h"
 
+WorldGraph::WorldGraph() {
 
+}
 
-void WorldGraph::add_place(Place& new_place)
+void WorldGraph::add_place(Place& place)
 {
-    addVertex(new_place);
+    addVertex(place);
 }
 
 void WorldGraph::add_connection(Connection& connection)
@@ -25,7 +27,7 @@ Place WorldGraph::get_place(int id)
     }
 }
 
-Edge<Place> * WorldGraph::get_connection(int id_A, int id_B)
+Edge<Place> WorldGraph::get_connection(int id_A, int id_B)
 {
     auto a = findVertex(get_place(id_A));
 
