@@ -40,12 +40,14 @@ void FileReaderToy::add_all_toy(const std::string &filename , WorldGraph &OurGra
 				if (!added[stoi(idOrigem)] )  // aqui no if envez de ter == False pus !
                 {
 					Place newPlace = Place(stoi(idOrigem));
+					OurGraph.add_place(newPlace);
 					added[stoi(idOrigem)] = true;
 				}
 
 				if (!added[stoi(idDestino)]) // aqui no if envez de ter == False pus !
                 {
 					Place newPlace = Place(stoi(idDestino));
+					OurGraph.add_place(newPlace);
 					added[stoi(idDestino)] = true;
 				}
 

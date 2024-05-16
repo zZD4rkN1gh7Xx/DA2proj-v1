@@ -12,4 +12,5 @@ add_executable(DA2proj_v1
         FileReaderToy.cpp
         connection.cpp
         FileReaderToy.cpp
+        Tarefas.h
 )
