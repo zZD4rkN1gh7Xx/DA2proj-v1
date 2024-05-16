@@ -13,7 +13,7 @@ int main(void)
 
     WorldGraph current_graph = WorldGraph();
 
-    FileReaderToy::add_all_toy("../files/Toy-Graphs/Toy-Graphs/stadiums.csv", current_graph);
+    FileReaderToy::add_all_toy("../files/Toy-Graphs/Toy-Graphs/tourism.csv", current_graph);
 
     for(auto a : current_graph.getVertexSet())
     {
@@ -21,5 +21,8 @@ int main(void)
 
     }
 
-    tspBacktrack(current_graph);
+    vector<Place> result = tspBacktrack(current_graph);
+    for (auto a : result) {
+        cout << a.get_id() << " - ";
+    }
 }

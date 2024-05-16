@@ -16,6 +16,7 @@ void WorldGraph::add_place(Place& place)
 void WorldGraph::add_connection(Connection& connection)
 {
     addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
+    addEdge(get_place(connection.get_id_B()), get_place(connection.get_id_A()), connection.get_distance());
 }
 
 Place WorldGraph::get_place(int id)
