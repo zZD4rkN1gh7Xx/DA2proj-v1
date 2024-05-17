@@ -10,7 +10,7 @@
 #include "worldGraph.h"
 
 void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double weight, double& min_weight, int count, std::vector<Place>& min_path) {
-    if (count == graph.getNumVertex() && place.get_id() == 0) {
+    if (count == (graph.getNumVertex() + 1) && place.get_id() == 0) {
         if (weight < min_weight) {
             min_weight = weight;
             min_path = path;
@@ -40,9 +40,7 @@ std::vector<Place> tspBacktrack(WorldGraph& graph) {
     std::vector<Place> min_path;
     double min_weight = INT_MAX;
 
-    for (auto& a : graph.getVertexSet()) {
-        a->setVisited(false);
-    }
+    graph.set_all_unvisited();
 
     std::vector<Place> path{ graph.get_place(0) };
     backtrack(graph, graph.get_place(0), path, 0, min_weight, 1, min_path); // Start from the first node
@@ -77,6 +75,14 @@ WorldGraph PrimMST(WorldGraph& graph) // opa como vamos sempre começar pelo nod
 
     return MST_graph;
 }
+
+
+
+
+
+
+
+
 
 std::vector<int> preorderWalk(WorldGraph& graph, Vertex<Place> * place)
 {

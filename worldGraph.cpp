@@ -93,25 +93,24 @@ Connection WorldGraph::get_min_edge()
 
     for(auto place : getVertexSet())
     {
-        // Check if the current vertex is visited
+
         if(place->isVisited())
         {
-            // Iterate through the adjacent connections of the current vertex
             for(auto connection : place->getAdj())
             {
-                // Check if the destination of the connection is not visited and if the weight is less than the current min_distance_connection
+
                 if(connection.getDest() && !connection.getDest()->isVisited() && connection.getWeight() < min_distance_connection.get_distance())
                 {
-                    // Update min_distance_connection with the information of the current connection
+
                     min_distance_connection = Connection(place->getInfo().get_id(), connection.getDest()->getInfo().get_id(), connection.getWeight());
                 }
             }
         }
     }
 
-    // Return the connection with the minimum weight found
+
     return min_distance_connection;
 }
 
 
-// isto vai nos dar as connections cuso o 1 vai ser o pai e o 2 vai ser o filho que se tornou visitado, vamoss estar a procura da edge com weight mais baixa
+

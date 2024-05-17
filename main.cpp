@@ -27,18 +27,20 @@ int main(void)
 
     //files/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/nodes.csv
     //../files/Toy-Graphs/Toy-Graphs/tourism.csv
-    //FileReaderToy::add_all_toy("../../files/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/nodes.csv", current_graph);
-    FileReaderToy::add_all_places_coordinates("D:\\FEUP 2ano\\2 semestre\\Desenho de algoritmos\\DAProj2_v2\\DA2proj-v1\\files\\Extra_Fully_Connected_Graphs\\Extra_Fully_Connected_Graphs\\nodes.csv", current_graph);
-    FileReaderToy::add_all_connections_coordinates("D:\\FEUP 2ano\\2 semestre\\Desenho de algoritmos\\DAProj2_v2\\DA2proj-v1\\files\\Extra_Fully_Connected_Graphs\\Extra_Fully_Connected_Graphs\\edges_25.csv", current_graph);
+    FileReaderToy::add_all_toy("D:\\FEUP 2ano\\2 semestre\\Desenho de algoritmos\\DAProj2_v2\\DA2proj-v1\\files\\Toy-Graphs\\Toy-Graphs\\shipping.csv", current_graph);
+    //FileReaderToy::add_all_places_coordinates("D:\\FEUP 2ano\\2 semestre\\Desenho de algoritmos\\DAProj2_v2\\DA2proj-v1\\files\\Extra_Fully_Connected_Graphs\\Extra_Fully_Connected_Graphs\\nodes.csv", current_graph);
+    //FileReaderToy::add_all_connections_coordinates("D:\\FEUP 2ano\\2 semestre\\Desenho de algoritmos\\DAProj2_v2\\DA2proj-v1\\files\\Extra_Fully_Connected_Graphs\\Extra_Fully_Connected_Graphs\\edges_25.csv", current_graph);
     //FileReaderToy::add_all_toy("D:\\FEUP 2ano\\2 semestre\\Desenho de algoritmos\\DAProj2_v2\\DA2proj-v1\\files\\Toy-Graphs\\Toy-Graphs\\stadiums.csv", current_graph);
 
 
 
-    std::vector<int> a = tsp_triangular_aprox(current_graph);
+    //std::vector<int> a = tsp_triangular_aprox(current_graph);
+
+    std::vector<Place> a = tspBacktrack(current_graph);
 
     for(auto b : a)
     {
-       std::cout << b << "->" ;
+       std::cout << b.get_id() << "->" ;
     }
 
     //std::cout << std::endl;
