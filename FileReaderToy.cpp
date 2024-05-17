@@ -163,9 +163,6 @@ void FileReaderToy::add_all_connections_coordinates(const std::string &filename 
         std::string line;
 
         while (std::getline(inputfile, line)) {
-            if (line.empty() || line.find_first_not_of(',') == std::string::npos) {
-                continue;
-            }
 
             while (!line.empty() && line.back() == ',') {
                 line.pop_back();

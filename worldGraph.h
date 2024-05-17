@@ -9,15 +9,22 @@
 #include "place.h"
 #include "connection.h"
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <limits>
 
 class WorldGraph :public Graph<Place>
 {
     public:
         WorldGraph();
-        void add_place(Place& place);
+        void add_place(Place place);
         void add_connection(Connection& connection);
-        Place get_place(int id);
+        Place get_place(Place id);
         Edge<Place> get_connection(int id_A, int id_B);
+        void set_all_unvisited();
+        bool are_all_visited();
+        vector<Edge<Place>> sort_edges();
+        Connection get_min_edge();
 
 };
 

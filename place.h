@@ -21,11 +21,11 @@ class Place
         Place();
         Place(int id);
         Place(int id, std::string name);
-        Place(int id, long longitude, long latitude);
+        Place(int id, double longitude, double latitude);
         int get_id();
         std::string get_name();
-        long get_longitude();
-        long get_latitude();
+        double get_longitude();
+        double get_latitude();
         bool operator==(const Place& other) const;
 
 };

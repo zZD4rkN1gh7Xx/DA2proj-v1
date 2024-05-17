@@ -21,7 +21,7 @@ int Connection::get_id_B()
     return this->id_B;
 }
 
-long Connection::get_distance()
+double Connection::get_distance()
 {
     return this->distance;
 }

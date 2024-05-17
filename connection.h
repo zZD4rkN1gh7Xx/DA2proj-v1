@@ -17,7 +17,7 @@ class Connection {
         Connection(int id_A, int id_B, double distance);
         int get_id_A();
         int get_id_B();
-        long get_distance();
+        double get_distance();
 };
 
 

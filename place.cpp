@@ -15,7 +15,7 @@ Place::Place(int id)
 	this->id = id;
 }
 
-Place::Place(int id, long longitude, long latitude)
+Place::Place(int id, double longitude, double latitude)
 {
     this->id = id;
     this->longitude = longitude;
@@ -32,12 +32,12 @@ std::string Place::get_name()
     return this->name;
 }
 
-long Place::get_longitude()
+double Place::get_longitude()
 {
     return this->longitude;
 }
 
-long Place::get_latitude()
+double Place::get_latitude()
 {
     return this->latitude;
 }
