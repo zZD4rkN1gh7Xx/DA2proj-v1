@@ -3,6 +3,7 @@ project(DA2proj_v1)
 
 set(CMAKE_CXX_STANDARD 14)
 
+
 include_directories(.)
 
 add_executable(DA2proj_v1

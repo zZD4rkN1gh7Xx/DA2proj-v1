@@ -16,15 +16,15 @@ class Menu {
 
     public:
     Menu();
-    static void DisplayAlgorithm(WorldGraph graph);
+    void DisplayAlgorithm(WorldGraph graph);
     void MainMenu();
     void Menu2();
     void LoadGraph(const std::string &filename);
     void LoadFullGraph(int edges);
     void LoadRealGraph(int graphNumber);
-    static void DisplayOptions();
+    void DisplayOptions();
     static void DisplayOptionsMore();
-    static bool ToMain();
+    bool ToMain();
 
 };
 

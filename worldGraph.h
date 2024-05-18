@@ -21,14 +21,21 @@
 #include <limits>
 #include <cstdlib>
 #include <ctime>
+#include <memory>
+#include <unordered_map>
 
 class WorldGraph :public Graph<Place>
 {
+    private:
+        std::vector<shared_ptr<Vertex<Place>>> vertex_set;
+        std::unordered_map<int, std::vector<Connection>> adj_list;
+        unordered_map<int, Place> place_map;
+
     public:
         WorldGraph();
         void add_place(Place place);
         void add_connection(Connection& connection, int status);
-        Place get_place(Place id);
+        Place get_place(int id);
         Edge<Place> get_connection(int id_A, int id_B);
         void set_all_unvisited();
         bool are_all_visited();

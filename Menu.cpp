@@ -55,7 +55,7 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
     std::cout<< std::endl << "|" << " Travelling Salesperson Problem " << "|" << std::endl << std::endl;
     std::cout<< "1 - Backtracking Algorithm (4.1)" << std::endl;
     std::cout<< "2 - Triangular Approximation Heuristic (4.2)" << std::endl;
-    std::cout<< "3 - Simulated Annealing Heuristic (4.3)" << std::endl;
+    std::cout<< "3 - Simulated Annealing Heuristic (recommended 10k iterations) (4.3)" << std::endl;
     std::cout<< "4 - Large Neighbour Search (4.4)" << std::endl;
 
     std::string ans;
@@ -100,6 +100,7 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
         }
         if(ToMain()) {
             DisplayOptions();
+            MainMenu();
             break;
         }
         else
@@ -149,6 +150,7 @@ void Menu::MainMenu() {
         else {
             std::cout << "Not a valid option, please try again" << std::endl << std::endl;
         }
+        break;
     }
 
 }
@@ -195,6 +197,7 @@ void Menu::Menu2() {
         else {
             std::cout << "Not a valid option, please try again" << std::endl << std::endl;
         }
+        break;
     }
 }
 
@@ -204,14 +207,14 @@ void Menu::LoadGraph(const std::string &filename) {
 }
 
 void Menu::LoadFullGraph(int edges) {
-    FileReaderToy::add_all_places_coordinates("../files/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/nodes.csv", current_graph);
+    FileReaderToy::add_all_places_coordinates("../files/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/nodes.csv", current_graph, (edges-1));
     std::string edges_file = "../files/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/edges_" + std::to_string(edges) + ".csv";
     FileReaderToy::add_all_connections_coordinates(edges_file, current_graph, 0);
     DisplayAlgorithm(current_graph);
 }
 
 void Menu::LoadRealGraph(int graphNumber) {
-    FileReaderToy::add_all_places_coordinates("../files/Real-world Graphs/graph" + std::to_string(graphNumber) + "/nodes.csv", current_graph);
+    FileReaderToy::add_all_places_coordinates("../files/Real-world Graphs/graph" + std::to_string(graphNumber) + "/nodes.csv", current_graph, INT_MAX);
     std::string edges_file = "../files/Real-world Graphs/graph" + std::to_string(graphNumber) + "/edges.csv";
     FileReaderToy::add_all_connections_coordinates(edges_file, current_graph, 1);
     DisplayAlgorithm(current_graph);
