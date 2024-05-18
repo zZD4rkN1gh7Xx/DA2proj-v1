@@ -13,4 +13,5 @@ add_executable(DA2proj_v1
         connection.cpp
         FileReaderToy.cpp
         Tarefas.h
+        Menu.cpp
 )
