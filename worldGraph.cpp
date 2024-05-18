@@ -9,6 +9,11 @@
 
 #include "worldGraph.h"
 
+#include <cmath>
+
+#include <complex>
+
+
 WorldGraph::WorldGraph() {
 
 }
@@ -49,16 +54,7 @@ Place WorldGraph::get_place(Place id)
 }
 
 
-Edge<Place> WorldGraph::get_connection(int id_A, int id_B)
-{
-    auto a = findVertex(get_place(id_A));
 
-    for(auto k : a->getAdj())
-    {
-        if(k.getDest()->getInfo().get_id() == id_B)
-            return k;
-    }
-}
 
 void WorldGraph::set_all_unvisited()
 {
@@ -151,6 +147,41 @@ std::vector<int> WorldGraph::random_path()
     return random_path;
 }
 
+double toRadianss(double degrees) {
+    return degrees * M_PI / 180.0;
+}
+
+double haversinee(Place place_A, Place place_B) {
+
+    double  lat_A = toRadianss(place_A.get_latitude());
+    double lon_A= toRadianss(place_A.get_longitude());
+    double  lat_B = toRadianss(place_B.get_latitude());
+    double  lon_B = toRadianss(place_B.get_longitude());
+
+
+    double dlat = lat_B - lat_A;
+    double dlon = lon_B - lon_A;
+    double a = std::sin(dlat / 2) * std::sin(dlat / 2) + std::cos(lat_A) * std::cos(lat_B) * std::sin(dlon / 2) * std::sin(dlon / 2);
+    double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+    double distance = 6371.0 * c;
+
+    return distance;
+}
+
+
+Edge<Place> WorldGraph::get_connection(int id_A, int id_B)
+{
+    auto a = findVertex(get_place(id_A));
+
+    for(auto k : a->getAdj())
+    {
+        if(k.getDest()->getInfo().get_id() == id_B)
+            return k;
+    }
+    Connection new_con = Connection(id_A, id_B, haversinee(get_place(id_A), get_place(id_B)));
+    add_connection(new_con, 0);
+    return get_connection(id_A, id_B);
+}
 
 
 

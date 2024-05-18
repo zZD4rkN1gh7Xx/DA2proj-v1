@@ -9,8 +9,8 @@
 #include <unordered_map>
 #include <complex>
 #include <cmath>
-#include <omp.h>
-#include "worldGraph.h"
+
+
 
 
 void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double weight, double& min_weight, int count, std::vector<Place>& min_path) {
@@ -173,6 +173,7 @@ double calculate_total_distance(WorldGraph& graph, const std::vector<int>& path)
 
         total_distance += connection.getWeight();
     }
+
 
 
     return total_distance;
@@ -356,6 +357,9 @@ std::vector<int> destroy(vector<int> current_sol,double rat)
 
     for (int i = 0; i < numNodesToRemove; ++i) {
         int indexToRemove = rand() % partial_sol.size();
+        while (partial_sol[indexToRemove] == partial_sol.front()) {
+            indexToRemove = rand() % partial_sol.size();
+        }
         partial_sol.erase(partial_sol.begin() + indexToRemove);
     }
 
@@ -387,6 +391,7 @@ std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iteratio
         // Perform local search for improvement
         for (int i = 0; i < num_iterations; i++)
         {
+                             //ja arranjei se entretanto voltares fui buscar alguma coisa pra comer
             // Destroy the current solution to create a partial solution
             std::vector<int> partial_sol = destroy( current_solution,rat);
 
@@ -418,6 +423,32 @@ void printTspBacktrack(WorldGraph& graph) {
     }
     cout << "Total distance: "<< calculate_total_distance(graph, ids);
 
+
+}
+
+void printTriangular(WorldGraph& graph) {
+    vector<int> result = tsp_triangular_aprox(graph);
+    for (auto a : result) {
+        std::cout << a << " -> ";
+    }
+    cout << "Total distance: "<< calculate_total_distance(graph, result);
+}
+
+void print_tsp_simulated_annealing(WorldGraph graph, double temp, double cooling, int iterations) {
+    vector<int> result = tsp_simulated_annealing(graph, temp, cooling, iterations);
+    for (auto a : result) {
+        std::cout << a << " -> ";
+    }
+    cout << "Total distance: " << calculate_total_distance(graph, result);
+
+}
+
+void print_tsp_realworld(WorldGraph graph, int startId, int iterations, double ratio) {
+    vector<int> result = tsp_realworld(graph, startId, iterations, ratio);
+    for (auto a : result) {
+        std::cout << a << " -> ";
+    }
+    cout << "Total distance: " << calculate_total_distance(graph, result);
 
 }
 

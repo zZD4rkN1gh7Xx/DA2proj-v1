@@ -11,7 +11,6 @@
 
 #include "FileReaderToy.h"
 #include <iostream>
-#include "worldGraph.h"
 
 #include "Tarefas.h"
 
@@ -68,7 +67,7 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
             printTspBacktrack(graph);
         }
         else if (ans == "2") {
-            tsp_triangular_aprox(graph);
+            printTriangular(graph);
         }
         else if (ans == "3") {
             std::string temp, cooling, iterations;
@@ -77,10 +76,10 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
             std::cout << std::endl << "Input cooling rate: ";
             std::cin>>cooling;
             std::cout << std::endl << "Input number of iterations: ";
-            std::cin>>temp;
+            std::cin>>iterations;
             std::cout << std::endl << std::endl;
 
-            tsp_simulated_annealing(graph, stod(temp), stod(cooling), stoi(iterations));
+            print_tsp_simulated_annealing(graph, stod(temp), stod(cooling), stoi(iterations));
         }
 
         else if (ans == "4") {
@@ -93,7 +92,7 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
             std::cin>>ratio;
             std::cout << std::endl << std::endl;
 
-            tsp_realworld(graph, stoi(startId), stoi(iterations), stod(ratio));
+            print_tsp_realworld(graph, stoi(startId), stoi(iterations), stod(ratio));
         }
         else {
             std::cout << "Invalid option, please try again." << std::endl;
