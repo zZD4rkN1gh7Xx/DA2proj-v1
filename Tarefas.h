@@ -9,7 +9,9 @@
 #include <unordered_map>
 #include <complex>
 #include <cmath>
+#include <omp.h>
 #include "worldGraph.h"
+
 
 void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double weight, double& min_weight, int count, std::vector<Place>& min_path) {
     if ((count == graph.getNumVertex() + 1) && place.get_id() == 0) {
@@ -66,7 +68,7 @@ WorldGraph PrimMST(WorldGraph& graph) // opa como vamos sempre começar pelo nod
     {
         Connection min_connection = graph.get_min_edge();
 
-        MST_graph.add_connection(min_connection);
+        MST_graph.add_connection(min_connection,0);
 
         graph.findVertex(graph.get_place(min_connection.get_id_B()))->setVisited(true);
     }
@@ -218,8 +220,23 @@ double haversine(Place place_A, Place place_B) {
     return distance;
 }
 
-bool exists_path(WorldGraph graph, int start_id)
+std::unordered_map<int,bool> set_not_visited(WorldGraph graph)
 {
+    std::unordered_map<int,bool> visited;
+
+    for(auto k : graph.getVertexSet())
+    {
+        visited[k->getInfo().get_id()] = false;
+    }
+
+    return visited;
+}
+
+bool exists_path(WorldGraph graph,WorldGraph util_graph , int start_id)
+{
+    unordered_map<int, bool> visited = set_not_visited(graph);
+
+
     int n = graph.getNumVertex();
     if (start_id < 0 || start_id >= n) {
         std::cout << "Invalid start ID" << std::endl;
@@ -228,8 +245,10 @@ bool exists_path(WorldGraph graph, int start_id)
 
     std::queue<int> q;
 
-    graph.findVertex(graph.get_place(start_id))->setVisited(true);
+    visited[start_id] = true;
     q.push(start_id);
+
+    util_graph.add_place(graph.get_place(start_id));
 
     while (!q.empty()) {
         int current = q.front();
@@ -237,14 +256,19 @@ bool exists_path(WorldGraph graph, int start_id)
 
         for (auto neighbor : graph.findVertex(graph.get_place(current))->getAdj())
         {
+            util_graph.add_place(neighbor.getDest()->getInfo());
+
+            Connection new_con = Connection(current, neighbor.getDest()->getInfo().get_id(), neighbor.getWeight());
+            util_graph.add_connection(new_con,0);
+
             if(neighbor.getDest()->getInfo().get_id() == start_id)
             {
                 return true;
             }
 
-            if(!neighbor.getDest()->isVisited())
+            if(!visited[neighbor.getDest()->getInfo().get_id()])
             {
-                neighbor.getDest()->setVisited(true);
+                visited[neighbor.getDest()->getInfo().get_id()] = true;
                 q.push(neighbor.getDest()->getInfo().get_id());
             }
         }
@@ -253,48 +277,110 @@ bool exists_path(WorldGraph graph, int start_id)
     return false;
 }
 
-std::vector<int> destroy(WorldGraph graph, vector<int> current_sol)
+
+std::vector<int> nearestNeighbor(WorldGraph graph, int start) {
+    int numCities = graph.getNumVertex();
+    std::unordered_map<int,bool> visited = set_not_visited(graph);
+    std::vector<int> tour;
+
+
+    int current = start;
+    visited[current] = true;
+    tour.push_back(current);
+
+    for (int i = 0; i < numCities - 1; ++i) {
+        int nearestCity = -1;
+        double minDistance = std::numeric_limits<double>::max();
+
+        // Find the nearest unvisited city
+        for (int j = 0; j < numCities; ++j) {
+            if (!visited[j]) {
+                double dist = haversine(graph.get_place(current), graph.get_place(j));
+                if (dist < minDistance) {
+                    minDistance = dist;
+                    nearestCity = j;
+                }
+            }
+        }
+
+        if (nearestCity == -1) {
+            nearestCity = start;
+        }
+
+        current = nearestCity;
+        visited[current] = true;
+        tour.push_back(current);
+    }
+
+    // Return to the starting city to complete the tour
+    tour.push_back(start);
+
+    return tour;
+}
+
+
+std::vector<int> destroy(vector<int> current_sol,double rat)
 {
 
+    std::vector<int> partial_sol = current_sol;
+
+    int numNodesToRemove = rat * current_sol.size();
+
+    for (int i = 0; i < numNodesToRemove; ++i) {
+        int indexToRemove = rand() % partial_sol.size();
+        partial_sol.erase(partial_sol.begin() + indexToRemove);
+    }
+
+    return partial_sol;
 }
 
 std::vector<int> repair(WorldGraph graph, vector<int> partial_sol)
 {
-
+    int startNode = partial_sol.back();
+    return nearestNeighbor(graph, startNode);
 }
 
 
 
 
-
-std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iterations)
+std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iterations, double rat)
 {
     std::vector<int> current_solution;
 
-    if(exists_path(graph, start_id))
+    // Create a utility graph (if needed) - check if this is necessary
+    WorldGraph util_graph;
+
+    // Check if a path exists from the starting node to itself
+    if (exists_path(graph, util_graph, start_id))
     {
-        //current_solution =
+        // Construct an initial solution using the Nearest Neighbor algorithm
+        current_solution = nearestNeighbor(graph, start_id);
 
-        for(int i = 0; i < num_iterations; i++)
+        // Perform local search for improvement
+        for (int i = 0; i < num_iterations; i++)
         {
-            std::vector<int> partial_sol = destroy(graph, current_solution);
+            // Destroy the current solution to create a partial solution
+            std::vector<int> partial_sol = destroy( current_solution,rat);
 
-            std::vector<int> repaired_sol = repair(graph,partial_sol);
+            // Repair the partial solution
+            std::vector<int> repaired_sol = repair(graph, partial_sol);
 
-            if (calculate_total_distance(graph, repaired_sol) < calculate_total_distance(graph, partial_sol)) {
-
+            // Compare the total distances of the repaired solution and partial solution
+            if (calculate_total_distance(graph, repaired_sol) < calculate_total_distance(graph, current_solution))
+            {
                 current_solution = repaired_sol;
             }
-
         }
     }
     else
     {
-        std::cout << "no path exists from the Place -" << start_id << "to itself." << std::endl;
+        // Output an error message if no path exists from the starting node to itself
+        std::cout << "Error: No path exists from the starting node - " << start_id << " to itself." << std::endl;
     }
 
-
+    return current_solution;
 }
+
 
 
 
