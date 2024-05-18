@@ -12,6 +12,8 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <cstdlib>
+#include <ctime>
 
 class WorldGraph :public Graph<Place>
 {
@@ -25,6 +27,7 @@ class WorldGraph :public Graph<Place>
         bool are_all_visited();
         vector<Edge<Place>> sort_edges();
         Connection get_min_edge();
+        std::vector<int> random_path();
 
 };
 

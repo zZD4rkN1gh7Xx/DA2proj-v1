@@ -16,6 +16,7 @@ void WorldGraph::add_place(Place place)
 void WorldGraph::add_connection(Connection& connection)
 {
     addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
+    addEdge(get_place(connection.get_id_B()), get_place(connection.get_id_A()), connection.get_distance());
 }
 
 Place WorldGraph::get_place(Place id)
@@ -88,7 +89,6 @@ vector<Edge<Place>> WorldGraph::sort_edges()
 
 Connection WorldGraph::get_min_edge()
 {
-    // Initialize min_distance_connection with a large weight
     Connection min_distance_connection(-1, -1, std::numeric_limits<double>::max());
 
     for(auto place : getVertexSet())
@@ -98,7 +98,6 @@ Connection WorldGraph::get_min_edge()
         {
             for(auto connection : place->getAdj())
             {
-
                 if(connection.getDest() && !connection.getDest()->isVisited() && connection.getWeight() < min_distance_connection.get_distance())
                 {
 
@@ -108,9 +107,39 @@ Connection WorldGraph::get_min_edge()
         }
     }
 
-
     return min_distance_connection;
 }
+
+std::vector<int> WorldGraph::random_path()
+{
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+    std::vector<int> random_path;
+
+    int num_places = getNumVertex();
+
+    int start_vertex = 0;
+
+    random_path.push_back(start_vertex);
+
+    findVertex(get_place(start_vertex))->setVisited(true);
+
+    while (random_path.size() < num_places)
+    {
+        int next_place = std::rand() % num_places;
+        if (!findVertex(get_place(next_place))->isVisited())
+        {
+            random_path.push_back(next_place);
+            findVertex(get_place(next_place))->setVisited(true);
+        }
+    }
+
+    random_path.push_back(0);
+
+    return random_path;
+}
+
+
 
 
 
