@@ -9,6 +9,9 @@
 
 #include "place.h"
 
+Place::Place() : id(-1) {
+}
+
 Place::Place(int id, std::string name)
 {
     this->id = id;

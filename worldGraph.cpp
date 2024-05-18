@@ -21,35 +21,32 @@ WorldGraph::WorldGraph() {
 void WorldGraph::add_place(Place place)
 {
     addVertex(place);
+    vertex_set.push_back(std::make_shared<Vertex<Place>>(place));
+    place_map[place.get_id()] = place;
 }
 
 void WorldGraph::add_connection(Connection& connection, int status)
 {
-    if(status == 1)
+    Place placeA = get_place(connection.get_id_A());
+    Place placeB = get_place(connection.get_id_B());
+    double dist = connection.get_distance();
+
+    #pragma omp critical
     {
-        addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
-    }
-    else
-    {
-        addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
-        addEdge(get_place(connection.get_id_B()), get_place(connection.get_id_A()), connection.get_distance());
+        addEdge(placeA, placeB, dist);
+        if (status == 0) {
+            addEdge(placeB, placeA, dist);
+        }
     }
 }
 
-Place WorldGraph::get_place(Place id)
+Place WorldGraph::get_place(int id)
 {
-    if(id == -1)
-    {
-        throw std::invalid_argument("Invalid place ID: -1");
+    auto it = place_map.find(id);
+    if (it != place_map.end()) {
+        return it->second;
     }
 
-    for(auto a : getVertexSet())
-    {
-        if(a->getInfo().get_id() == id.get_id())
-            return a->getInfo();
-    }
-
-    // If the place with the given ID is not found, you might want to throw an exception or return a default value.
     throw std::invalid_argument("Place with the given ID not found");
 }
 

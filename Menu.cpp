@@ -100,6 +100,7 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
         }
         if(ToMain()) {
             DisplayOptions();
+            MainMenu();
             break;
         }
         else
@@ -196,6 +197,7 @@ void Menu::Menu2() {
         else {
             std::cout << "Not a valid option, please try again" << std::endl << std::endl;
         }
+        break;
     }
 }
 
