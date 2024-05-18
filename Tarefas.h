@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include <complex>
 #include <cmath>
+#include <iomanip>
 
 /**
     *@file tarefas.h
@@ -312,39 +313,37 @@ bool exists_path(WorldGraph graph,WorldGraph util_graph , int start_id)
 }
 
 
-std::vector<int> nearestNeighbor(WorldGraph graph, int start)
+std::vector<int> nearestNeighbor(WorldGraph& graph, int start)
 {
-    /**
-    *@return return  path acording the nearest neighbour algorithm
-    *@param graph,start the graph we are exploring and the start node
-    Complexity O(n^2)*/
-
     int numCities = graph.getNumVertex();
-    std::unordered_map<int,bool> visited = set_not_visited(graph);
+    std::unordered_map<int, bool> visited = set_not_visited(graph);
     std::vector<int> tour;
-
 
     int current = start;
     visited[current] = true;
     tour.push_back(current);
 
-    for (int i = 0; i < numCities - 1; ++i) {
+    for (int i = 0; i < numCities - 1; ++i)
+    {
         int nearestCity = -1;
         double minDistance = std::numeric_limits<double>::max();
 
-        // Find the nearest unvisited city
-        for (int j = 0; j < numCities; ++j) {
-            if (!visited[j]) {
+        for (int j = 0; j < numCities; ++j)
+        {
+            if (!visited[j])
+            {
                 double dist = haversine(graph.get_place(current), graph.get_place(j));
-                if (dist < minDistance) {
+                if (dist < minDistance)
+                {
                     minDistance = dist;
                     nearestCity = j;
                 }
             }
         }
 
-        if (nearestCity == -1) {
-            nearestCity = start;
+        if (nearestCity == -1)
+        {
+            break;
         }
 
         current = nearestCity;
@@ -352,94 +351,161 @@ std::vector<int> nearestNeighbor(WorldGraph graph, int start)
         tour.push_back(current);
     }
 
-    // Return to the starting city to complete the tour
     tour.push_back(start);
-
     return tour;
 }
 
 
-std::vector<int> destroy(vector<int> current_sol,double rat)
+std::vector<int> destroy(std::vector<int>& current_sol, int k)
 {
-
-    /**
-    *@return returns took our random elements of the path
-    *@param current_sol,rat the current solution used for the problem and the percentage of items it ill remove
-    Complexity O(n^2)*/
-
     std::vector<int> partial_sol = current_sol;
 
-    int numNodesToRemove = rat * current_sol.size();
+    // Choose a random starting index for the segment to remove
+    int start_index = rand() % (partial_sol.size() - k);
 
-    for (int i = 0; i < numNodesToRemove; ++i) {
-        int indexToRemove = rand() % partial_sol.size();
-        while (partial_sol[indexToRemove] == partial_sol.front()) {
-            indexToRemove = rand() % partial_sol.size();
-        }
-        partial_sol.erase(partial_sol.begin() + indexToRemove);
-    }
+    // Erase the segment from the current solution
+    partial_sol.erase(partial_sol.begin() + start_index, partial_sol.begin() + start_index + k);
 
     return partial_sol;
 }
 
-std::vector<int> repair(WorldGraph graph, vector<int> partial_sol)
+std::vector<int> repair(WorldGraph& graph, const std::vector<int>& partial_sol)
 {
-    /**
-    *@return a vector with the new solution after what was removed got rearranged
-    *@param  graph,partial_sol the graph we are using and the partial solution we took out during the destroy
-    Complexity O(n^2)*/
+    std::vector<int> new_solution = partial_sol;
 
-    int startNode = partial_sol.back();
-    return nearestNeighbor(graph, startNode);
+    // Iterate over all nodes in the graph
+    for (int node_id = 0; node_id < graph.getNumVertex(); ++node_id) {
+        // Check if the current node is not already in the partial solution
+        if (std::find(partial_sol.begin(), partial_sol.end(), node_id) == partial_sol.end()) {
+            // Find the position to insert the node in the partial solution
+            double min_distance = std::numeric_limits<double>::max();
+            size_t insert_position = 0;
+            for (size_t i = 0; i < new_solution.size() - 1; ++i) {
+                double distance = haversine(graph.get_place(new_solution[i]), graph.get_place(node_id)) +
+                                  haversine(graph.get_place(node_id), graph.get_place(new_solution[i + 1])) -
+                                  haversine(graph.get_place(new_solution[i]), graph.get_place(new_solution[i + 1]));
+                if (distance < min_distance) {
+                    min_distance = distance;
+                    insert_position = i + 1; // Insert after the current node
+                }
+            }
+
+            // Insert the node into the partial solution
+            new_solution.insert(new_solution.begin() + insert_position, node_id);
+        }
+    }
+
+    return new_solution;
 }
+
+
+
+
+std::vector<int> twoOpt(WorldGraph& graph, const std::vector<int>& tour)
+{
+    int max_iterations = 30;
+    std::vector<int> improved_tour = tour;
+    bool improvement = true;
+    int iteration = 0;
+
+    while (improvement && iteration < max_iterations)
+    {
+        improvement = false;
+        for (size_t i = 1; i < improved_tour.size() - 2; ++i)
+        {
+            for (size_t j = i + 1; j < improved_tour.size() - 1; ++j)
+            {
+                double dist_before = calculate_total_distance(graph, improved_tour);
+
+                // Reverse the segment between nodes i and j
+                std::reverse(improved_tour.begin() + i, improved_tour.begin() + j + 1);
+
+                double dist_after = calculate_total_distance(graph, improved_tour);
+
+                // Check if the tour length improved
+                if (dist_after < dist_before)
+                {
+                    improvement = true;
+                    break;  // Break the inner loop and re-enter the while loop
+                }
+                else
+                {
+                    // Revert the swap if it didn't improve the tour
+                    std::reverse(improved_tour.begin() + i, improved_tour.begin() + j + 1);
+                }
+            }
+            if (improvement)
+            {
+                break;  // Break the outer loop if improvement was made
+            }
+        }
+        iteration++;
+    }
+
+    return improved_tour;
+}
+
 
 
 
 
 std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iterations, double rat)
 {
-
-    /**
-    *@return a vector with the new solution according the Large_neighbpour_heuristic (LNS)
-    *@param  graph,start_id,num_iterations,rat the graph we will be using the id of the starting node the numer of iterations we want (the more the best for better results) and the percentage of destruction it will have
-    Complexity O(num_iter * (k + (n^2 + n^2)))*/
-
     std::vector<int> current_solution;
 
-    // Create a utility graph (if needed) - check if this is necessary
     WorldGraph util_graph;
 
-    // Check if a path exists from the starting node to itself
+    // Initialize k using the distance-based heuristic
     if (exists_path(graph, util_graph, start_id))
     {
-        // Construct an initial solution using the Nearest Neighbor algorithm
         current_solution = nearestNeighbor(graph, start_id);
+        int initial_k = round(current_solution.size() * rat);
 
-        // Perform local search for improvement
-        for (int i = 0; i < num_iterations; i++)
+        // Initialize variables for solution improvement rate heuristic
+        int improvement_count = 0;
+        int max_improvement_count = num_iterations / 10; // Adjust as needed
+
+        int k = initial_k;
+
+        for (int i = 0; i < num_iterations; ++i)
         {
-                             //ja arranjei se entretanto voltares fui buscar alguma coisa pra comer
-            // Destroy the current solution to create a partial solution
-            std::vector<int> partial_sol = destroy( current_solution,rat);
+            std::vector<int> new_solution = current_solution;
 
-            // Repair the partial solution
+            // Perform destruction phase
+            std::vector<int> partial_sol = destroy(new_solution, k);
+
+            // Perform repair phase
             std::vector<int> repaired_sol = repair(graph, partial_sol);
 
-            // Compare the total distances of the repaired solution and partial solution
-            if (calculate_total_distance(graph, repaired_sol) < calculate_total_distance(graph, current_solution))
+            // Perform local search with 2-opt
+            repaired_sol = twoOpt(graph, repaired_sol);
+
+            // Update current solution if it's better
+            double current_distance = calculate_total_distance(graph, current_solution);
+            double new_distance = calculate_total_distance(graph, repaired_sol);
+            if (new_distance < current_distance)
             {
                 current_solution = repaired_sol;
+                improvement_count++;
+            }
+
+            // Update k based on solution improvement rate heuristic
+            if (improvement_count >= max_improvement_count)
+            {
+                k = std::min(2 * k, static_cast<int>(graph.getNumVertex() * 0.1)); // Increase k
+                improvement_count = 0; // Reset improvement count
             }
         }
     }
     else
     {
-        // Output an error message if no path exists from the starting node to itself
         std::cout << "Error: No path exists from the starting node - " << start_id << " to itself." << std::endl;
     }
 
     return current_solution;
 }
+
+
 
 void printTspBacktrack(WorldGraph& graph) {
     vector<Place> result = tspBacktrack(graph);
@@ -448,7 +514,7 @@ void printTspBacktrack(WorldGraph& graph) {
         std::cout<<a.get_id()<<" -> ";
         ids.push_back(a.get_id());
     }
-    cout << "Total distance: "<< calculate_total_distance(graph, ids);
+    cout << "Total distance: "<< std::setprecision(15) << calculate_total_distance(graph, ids);
 
 
 }
@@ -458,7 +524,7 @@ void printTriangular(WorldGraph& graph) {
     for (auto a : result) {
         std::cout << a << " -> ";
     }
-    cout << "Total distance: "<< calculate_total_distance(graph, result);
+    cout << "Total distance: "<< std::setprecision(15) << calculate_total_distance(graph, result);
 }
 
 void print_tsp_simulated_annealing(WorldGraph graph, double temp, double cooling, int iterations) {
@@ -466,7 +532,7 @@ void print_tsp_simulated_annealing(WorldGraph graph, double temp, double cooling
     for (auto a : result) {
         std::cout << a << " -> ";
     }
-    cout << "Total distance: " << calculate_total_distance(graph, result);
+    cout << "Total distance: " << std::setprecision(15) << calculate_total_distance(graph, result);
 
 }
 
@@ -475,7 +541,7 @@ void print_tsp_realworld(WorldGraph graph, int startId, int iterations, double r
     for (auto a : result) {
         std::cout << a << " -> ";
     }
-    cout << "Total distance: " << calculate_total_distance(graph, result);
+    cout << "Total distance: " << std::setprecision(15) << calculate_total_distance(graph, result);
 
 }
 
