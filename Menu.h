@@ -6,6 +6,10 @@
 #define MENU_H
 #include <worldGraph.h>
 
+/**
+    *@file menu.h
+    *@brief Header file for the Menu class
+*/
 
 class Menu {
     WorldGraph current_graph;

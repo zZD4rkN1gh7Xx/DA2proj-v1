@@ -14,6 +14,12 @@
 
 
 void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double weight, double& min_weight, int count, std::vector<Place>& min_path) {
+
+    /**
+    *@return finds the way that has the minimum path distance traveled between the node 0 and itself passing trough all the other nodes only once
+    *@param graph,place,path,weight,min_weight,count,min_path the graph we are currently using with the place we start(node 0) with on possible path the waight of the path and the smallest weight of a path in hte graph along with the minimum path
+    Complexity O(V⋅V!)*/
+
     if ((count == graph.getNumVertex() + 1) && place.get_id() == 0) {
         if (weight < min_weight) {
             min_weight = weight;
@@ -35,6 +41,12 @@ void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double 
 }
 
 std::vector<Place> tspBacktrack(WorldGraph& graph) {
+
+    /**
+    *@return returs the minimal path using a backtrack algorithm
+    *@param graph the graph we will be using to find its mimimum path
+    Complexity O(V⋅V⋅V!)*/
+
     std::vector<Place> min_path;
     double min_weight = INT_MAX;
 
@@ -52,6 +64,11 @@ std::vector<Place> tspBacktrack(WorldGraph& graph) {
 
 WorldGraph PrimMST(WorldGraph& graph) // opa como vamos sempre começar pelo node 0 acho que ta chill nao por por onde e que o algoritmo começa ne?
 {
+    /**
+    *@return returs an MST of the graph starting on the node with id 0
+    *@param graph the graph we will be using to find its mimimum path
+    Complexity O(ElogV)*/
+
     graph.set_all_unvisited(); // dar  set a todos os nodes a unvisited
 
     WorldGraph MST_graph; // novo grafo que vai ficar com a MST
@@ -79,6 +96,11 @@ WorldGraph PrimMST(WorldGraph& graph) // opa como vamos sempre começar pelo nod
 
 std::vector<int> preorderWalk(WorldGraph& graph, Vertex<Place> * place)
 {
+    /**
+    *@return returns the order we visit the nodes to go to all
+    *@param graph,place the graph we are using and the node we want to start
+    Complexity O(V+E)*/
+
     std::vector<int> traversalOrder;
 
     if(!place)
@@ -104,6 +126,11 @@ std::vector<int> preorderWalk(WorldGraph& graph, Vertex<Place> * place)
 
 std::vector<int> tsp_triangular_aprox(WorldGraph& graph)
 {
+    /**
+    *@return return the path acording to the triagular aproximation
+    *@param graph, the graph we are searching
+    Complexity O(V!)*/
+
     vector<int> triangular_aprox;
     std::unordered_map<int,int> hamiltonian_path;
 

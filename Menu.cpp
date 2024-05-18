@@ -2,6 +2,11 @@
 // Created by jogos on 5/18/2024.
 //
 
+/**
+    *@file menu.cpp
+    *@brief Implementation of the Menu class methods
+*/
+
 #include "Menu.h"
 
 #include "FileReaderToy.h"

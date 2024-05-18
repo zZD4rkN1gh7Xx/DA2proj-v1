@@ -2,6 +2,11 @@
 // Created by Me:D on 15/05/2024.
 //
 
+/**
+    *@file place.h
+    *@brief Implementation of Graph, Vertex and Edge classes
+*/
+
 #ifndef DAPROJ2_V2_PLACE_H
 #define DAPROJ2_V2_PLACE_H
 

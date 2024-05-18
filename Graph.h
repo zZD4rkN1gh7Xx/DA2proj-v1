@@ -1,6 +1,12 @@
 /*
  * Graph.h
  */
+
+/**
+    *@file graph.h
+    *@brief Implementation' for the Menu class
+*/
+
 #ifndef GRAPH_H_
 #define GRAPH_H_
 

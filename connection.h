@@ -2,6 +2,11 @@
 // Created by Administrador on 15/05/2024.
 //
 
+/**
+    *@file connection.h
+    *@brief Header of Connection class methods
+*/
+
 #ifndef DAPROJ2_V2_CONNECTION_H
 #define DAPROJ2_V2_CONNECTION_H
 

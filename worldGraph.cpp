@@ -2,6 +2,11 @@
 // Created by Administrador on 15/05/2024.
 //
 
+/**
+    *@file worldGraph.cpp
+    *@brief Implementation of the worldGraph class methods
+*/
+
 #include "worldGraph.h"
 
 WorldGraph::WorldGraph() {

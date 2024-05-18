@@ -2,6 +2,11 @@
 // Created by jogos on 5/15/2024.
 //
 
+/**
+    *@file fileReaderToy.cpp
+    *@brief Implementation of FileReaderToy class methods
+*/
+
 #include "FileReaderToy.h"
 
 #include <connection.h>

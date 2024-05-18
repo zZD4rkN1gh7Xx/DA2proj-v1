@@ -2,6 +2,11 @@
 // Created by Administrador on 15/05/2024.
 //
 
+/**
+    *@file place.h
+    *@brief Implementation of the Place class methods
+*/
+
 #include "place.h"
 
 Place::Place(int id, std::string name)

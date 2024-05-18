@@ -2,6 +2,13 @@
 // Created by Administrador on 15/05/2024.
 //
 
+
+
+/**
+    *@file worldGraph.h
+    *@brief Header file for the worldGraph class an extention of graph.h
+*/
+
 #ifndef DAPROJ2_V2_WORLDGRAPH_H
 #define DAPROJ2_V2_WORLDGRAPH_H
 

@@ -2,6 +2,11 @@
 // Created by jogos on 5/15/2024.
 //
 
+/**
+    *@file fileReaderToy.h
+    *@brief Header file for FileReaderToy class
+*/
+
 #ifndef FILEREADER_H
 #define FILEREADER_H
 #include "Graph.h"

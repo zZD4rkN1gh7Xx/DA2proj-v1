@@ -1,0 +1,69 @@
+\doxysection{World\+Graph Class Reference}
+\hypertarget{class_world_graph}{}\label{class_world_graph}\index{WorldGraph@{WorldGraph}}
+Inheritance diagram for World\+Graph\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_world_graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_world_graph_adb01d3dedb0124d4d7d3291505fa11b7}\label{class_world_graph_adb01d3dedb0124d4d7d3291505fa11b7} 
+void {\bfseries add\+\_\+place} (\mbox{\hyperlink{class_place}{Place}} place)
+\item 
+\Hypertarget{class_world_graph_a2b515ca78cf5e564d3a392d8e083c592}\label{class_world_graph_a2b515ca78cf5e564d3a392d8e083c592} 
+void {\bfseries add\+\_\+connection} (\mbox{\hyperlink{class_connection}{Connection}} \&connection, int status)
+\item 
+\Hypertarget{class_world_graph_a304964178d97f1ed1d7da078c0b507dc}\label{class_world_graph_a304964178d97f1ed1d7da078c0b507dc} 
+\mbox{\hyperlink{class_place}{Place}} {\bfseries get\+\_\+place} (\mbox{\hyperlink{class_place}{Place}} id)
+\item 
+\Hypertarget{class_world_graph_ad4a5d849647fdf80e72e40d22fe27196}\label{class_world_graph_ad4a5d849647fdf80e72e40d22fe27196} 
+\mbox{\hyperlink{class_edge}{Edge}}$<$ \mbox{\hyperlink{class_place}{Place}} $>$ {\bfseries get\+\_\+connection} (int id\+\_\+A, int id\+\_\+B)
+\item 
+\Hypertarget{class_world_graph_a10cee9a10133cd6e951b9842376371cc}\label{class_world_graph_a10cee9a10133cd6e951b9842376371cc} 
+void {\bfseries set\+\_\+all\+\_\+unvisited} ()
+\item 
+\Hypertarget{class_world_graph_ab3da7d1ef77e494209546562b8adc97f}\label{class_world_graph_ab3da7d1ef77e494209546562b8adc97f} 
+bool {\bfseries are\+\_\+all\+\_\+visited} ()
+\item 
+\Hypertarget{class_world_graph_ac2114ba0ef31e0647a3a8928ba8890f9}\label{class_world_graph_ac2114ba0ef31e0647a3a8928ba8890f9} 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}}$<$ \mbox{\hyperlink{class_place}{Place}} $>$ $>$ {\bfseries sort\+\_\+edges} ()
+\item 
+\Hypertarget{class_world_graph_adb54a289fc5ccc8687e05aa2a76e6417}\label{class_world_graph_adb54a289fc5ccc8687e05aa2a76e6417} 
+\mbox{\hyperlink{class_connection}{Connection}} {\bfseries get\+\_\+min\+\_\+edge} ()
+\item 
+\Hypertarget{class_world_graph_a10abe17ffa4faddc2677bcbad5ac0162}\label{class_world_graph_a10abe17ffa4faddc2677bcbad5ac0162} 
+std\+::vector$<$ int $>$ {\bfseries random\+\_\+path} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_graph}{Graph$<$ Place $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \texorpdfstring{$\ast$}{*} {\bfseries find\+Vertex} (const \mbox{\hyperlink{class_place}{Place}} \&in) const
+\item 
+int {\bfseries get\+Num\+Vertex} () const
+\item 
+bool {\bfseries add\+Vertex} (\mbox{\hyperlink{class_place}{Place}} \&in)
+\item 
+bool {\bfseries remove\+Vertex} (const \mbox{\hyperlink{class_place}{Place}} \&in)
+\item 
+bool {\bfseries add\+Edge} (const \mbox{\hyperlink{class_place}{Place}} \&sourc, const \mbox{\hyperlink{class_place}{Place}} \&dest, double w)
+\item 
+bool {\bfseries remove\+Edge} (const \mbox{\hyperlink{class_place}{Place}} \&sourc, const \mbox{\hyperlink{class_place}{Place}} \&dest)
+\item 
+vector$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Vertex\+Set} () const
+\item 
+vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ {\bfseries dfs} () const
+\item 
+vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ {\bfseries dfs} (const \mbox{\hyperlink{class_place}{Place}} \&source) const
+\item 
+vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ {\bfseries bfs} (const \mbox{\hyperlink{class_place}{Place}} \&source) const
+\item 
+void {\bfseries emit\+DOTFile} (string gname)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+world\+Graph.\+h\item 
+world\+Graph.\+cpp\end{DoxyCompactItemize}
