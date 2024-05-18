@@ -13,10 +13,17 @@ void WorldGraph::add_place(Place place)
     addVertex(place);
 }
 
-void WorldGraph::add_connection(Connection& connection)
+void WorldGraph::add_connection(Connection& connection, int status)
 {
-    addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
-    addEdge(get_place(connection.get_id_B()), get_place(connection.get_id_A()), connection.get_distance());
+    if(status == 1)
+    {
+        addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
+    }
+    else
+    {
+        addEdge(get_place(connection.get_id_A()), get_place(connection.get_id_B()), connection.get_distance());
+        addEdge(get_place(connection.get_id_B()), get_place(connection.get_id_A()), connection.get_distance());
+    }
 }
 
 Place WorldGraph::get_place(Place id)

@@ -3,9 +3,11 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include "FileReaderToy.h"
 #include "Tarefas.h"
 #include "worldGraph.h"
+
 
 int main(void)
 {
@@ -13,17 +15,6 @@ int main(void)
 
     WorldGraph current_graph = WorldGraph();
 
-    /*
-    Place a = Place(1,-43.30181022730023,-23.011972156360795);
-    Place b = Place(2,-43.21636554138819,-22.920250516077687);
-    Place c = Place(3,-43.32304806953678,-23.006841073845603);
-    Place d = Place(4,-43.33148035581998,-22.946701029022186);
-
-    current_graph.add_place(a);
-    current_graph.add_place(b);
-    current_graph.add_place(c);
-    current_graph.add_place(d);
-     */
 
     //files/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/nodes.csv
     //../files/Toy-Graphs/Toy-Graphs/tourism.csv
@@ -37,24 +28,22 @@ int main(void)
     //std::vector<int> a = tsp_triangular_aprox(current_graph);
 
     //
-    std::vector<int> a = tsp_simulated_annealing(current_graph, 1000, 0.999, 1000000);
+    /*std::vector<int> a = tsp_simulated_annealing(current_graph, 1000, 0.995, 1000);
 
     for(auto b : a)
     {
        std::cout << b << "->" ;
     }
 
-    std::cout << calculate_total_distance(current_graph,a);
+    std::cout << calculate_total_distance(current_graph,a);*/
     //std::cout << std::endl;
     /*vector<Place> result = tspBacktrack(current_graph);
     for (auto a : result) {
         cout << a.get_id() << " - ";
     }*/
 
-    /*for(auto a : current_graph.getVertexSet())
-    {
-        std::cout << a->getInfo().get_id() << " " << a->getInfo().get_longitude() << " " << a->getInfo().get_longitude() << std::endl;
-    }*/
-
-
+    for(auto a : current_graph.getVertexSet()) {
+        std::cout << a->getInfo().get_id() << " " << std::setprecision(15)  << a->getInfo().get_longitude() << " " << std::setprecision(15) << a->getInfo().get_longitude()
+                  << std::endl;
+    }
 }

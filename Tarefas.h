@@ -8,6 +8,7 @@
 #include <utility>
 #include <unordered_map>
 #include <complex>
+#include <cmath>
 #include "worldGraph.h"
 
 void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double weight, double& min_weight, int count, std::vector<Place>& min_path) {
@@ -129,7 +130,7 @@ std::vector<int> tsp_triangular_aprox(WorldGraph& graph)
     return triangular_aprox;
 }
 
-double calculate_total_distance(WorldGraph& graph, const std::vector<int>& path)
+long calculate_total_distance(WorldGraph& graph, const std::vector<int>& path)
 {
     double total_distance = 0.0;
 
@@ -156,7 +157,7 @@ std::vector<int> tsp_simulated_annealing(WorldGraph& graph, double initial_tempe
 {
     graph.set_all_unvisited();
 
-    std::vector<int> current_solution = graph.random_path();
+    std::vector<int> current_solution = tsp_triangular_aprox(graph);
 
     double current_distance = calculate_total_distance(graph, current_solution);
 
@@ -194,6 +195,106 @@ std::vector<int> tsp_simulated_annealing(WorldGraph& graph, double initial_tempe
     return best_solution;
 }
 
+const double EARTH_RADIUS_KM = 6371.0;
+
+double toRadians(double degrees) {
+    return degrees * M_PI / 180.0;
+}
+
+double haversine(Place place_A, Place place_B) {
+
+    double  lat_A = toRadians(place_A.get_latitude());
+    double lon_A= toRadians(place_A.get_longitude());
+    double  lat_B = toRadians(place_B.get_latitude());
+    double  lon_B = toRadians(place_B.get_longitude());
+
+
+    double dlat = lat_B - lat_A;
+    double dlon = lon_B - lon_A;
+    double a = std::sin(dlat / 2) * std::sin(dlat / 2) + std::cos(lat_A) * std::cos(lat_B) * std::sin(dlon / 2) * std::sin(dlon / 2);
+    double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+    double distance = EARTH_RADIUS_KM * c;
+
+    return distance;
+}
+
+bool exists_path(WorldGraph graph, int start_id)
+{
+    int n = graph.getNumVertex();
+    if (start_id < 0 || start_id >= n) {
+        std::cout << "Invalid start ID" << std::endl;
+        return false;
+    }
+
+    std::queue<int> q;
+
+    graph.findVertex(graph.get_place(start_id))->setVisited(true);
+    q.push(start_id);
+
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+
+        for (auto neighbor : graph.findVertex(graph.get_place(current))->getAdj())
+        {
+            if(neighbor.getDest()->getInfo().get_id() == start_id)
+            {
+                return true;
+            }
+
+            if(!neighbor.getDest()->isVisited())
+            {
+                neighbor.getDest()->setVisited(true);
+                q.push(neighbor.getDest()->getInfo().get_id());
+            }
+        }
+    }
+
+    return false;
+}
+
+std::vector<int> destroy(WorldGraph graph, vector<int> current_sol)
+{
+
+}
+
+std::vector<int> repair(WorldGraph graph, vector<int> partial_sol)
+{
+
+}
+
+
+
+
+
+std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iterations)
+{
+    std::vector<int> current_solution;
+
+    if(exists_path(graph, start_id))
+    {
+        //current_solution =
+
+        for(int i = 0; i < num_iterations; i++)
+        {
+            std::vector<int> partial_sol = destroy(graph, current_solution);
+
+            std::vector<int> repaired_sol = repair(graph,partial_sol);
+
+            if (calculate_total_distance(graph, repaired_sol) < calculate_total_distance(graph, partial_sol)) {
+
+                current_solution = repaired_sol;
+            }
+
+        }
+    }
+    else
+    {
+        std::cout << "no path exists from the Place -" << start_id << "to itself." << std::endl;
+    }
+
+
+}
 
 
 

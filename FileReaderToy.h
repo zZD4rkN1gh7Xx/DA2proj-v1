@@ -13,7 +13,8 @@ class FileReaderToy {
         static void add_all_toy(const std::string &filename , WorldGraph &OurGraph);
         static void add_all_tourism(const std::string &filename , WorldGraph &OurGraph);
         static void add_all_places_coordinates(const std::string &filename , WorldGraph &OurGraph);
-        static void add_all_connections_coordinates(const std::string &filename , WorldGraph &OurGraph);
+        static void add_all_connections_coordinates(const std::string &filename , WorldGraph &OurGraph,int status);
+
 };
 
 

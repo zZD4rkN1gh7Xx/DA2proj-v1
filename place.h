@@ -13,8 +13,8 @@ class Place
     private:
         int id;
         std::string name;
-        long longitude;
-        long latitude;
+        double longitude;
+        double latitude;
 
     public:
 

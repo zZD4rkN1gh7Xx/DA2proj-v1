@@ -52,7 +52,7 @@ void FileReaderToy::add_all_toy(const std::string &filename , WorldGraph &OurGra
 				}
 
 				Connection newConnection = Connection(stoi(idOrigem), stoi(idDestino), stoi(distance));
-				OurGraph.add_connection(newConnection);
+				OurGraph.add_connection(newConnection,0);
 			}
 
 			else
@@ -108,7 +108,7 @@ void FileReaderToy::add_all_tourism(const std::string &filename , WorldGraph &Ou
 				}
 
 				Connection newConnection = Connection(stoi(idOrigem), stoi(idDestino), stoi(distance));
-				OurGraph.add_connection(newConnection);
+				OurGraph.add_connection(newConnection,0);
 			}
 
 			else
@@ -155,7 +155,7 @@ void FileReaderToy::add_all_places_coordinates(const std::string &filename , Wor
     }
 }
 
-void FileReaderToy::add_all_connections_coordinates(const std::string &filename , WorldGraph &OurGraph)
+void FileReaderToy::add_all_connections_coordinates(const std::string &filename , WorldGraph &OurGraph, int status)
 {
     std::ifstream inputfile(filename);
 
@@ -176,8 +176,16 @@ void FileReaderToy::add_all_connections_coordinates(const std::string &filename 
                 std::getline(iss, distance, ','))
             {
                 Connection new_connection = Connection(std::stoi(idOrigem), std::stoi(idChegada), std::stod(distance));
-                Connection new_connection_reverse = Connection(std::stoi(idChegada), std::stoi(idOrigem), std::stod(distance));
-                OurGraph.add_connection(new_connection);
+                if(status == 1)
+                {
+                    OurGraph.add_connection(new_connection,1);
+                }
+
+                else
+                {
+                    OurGraph.add_connection(new_connection,0);
+                }
+
             }
             else
             {
@@ -188,3 +196,4 @@ void FileReaderToy::add_all_connections_coordinates(const std::string &filename 
         inputfile.close();
     }
 }
+

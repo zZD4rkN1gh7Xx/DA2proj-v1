@@ -20,7 +20,7 @@ class WorldGraph :public Graph<Place>
     public:
         WorldGraph();
         void add_place(Place place);
-        void add_connection(Connection& connection);
+        void add_connection(Connection& connection, int status);
         Place get_place(Place id);
         Edge<Place> get_connection(int id_A, int id_B);
         void set_all_unvisited();
