@@ -1,0 +1,19 @@
+# ninja log v5
+4	54	7377573516871126	CMakeFiles/DA2proj_v1.dir/connection.cpp.obj	b5edee61bf7f80fe
+676	872	7377574287323471	DA2proj_v1.exe	789718c9b7d0fdb3
+0	296	7377573519293055	CMakeFiles/DA2proj_v1.dir/place.cpp.obj	7fdda7ed99d66257
+8	605	7377573522362600	CMakeFiles/DA2proj_v1.dir/worldGraph.cpp.obj	1268393b27bbf3d5
+6	612	7377573522437627	CMakeFiles/DA2proj_v1.dir/FileReaderToy.cpp.obj	b39f82f0638dc78f
+2	676	7377574285376529	CMakeFiles/DA2proj_v1.dir/main.cpp.obj	610d9466d2c9e3b8
+1	92	7377630501671998	build.ninja	99d0e5413b3798ba
+8	46	7377630502512963	CMakeFiles/DA2proj_v1.dir/connection.cpp.obj	b5edee61bf7f80fe
+6	185	7377630503905585	CMakeFiles/DA2proj_v1.dir/place.cpp.obj	7fdda7ed99d66257
+10	344	7377630505473444	CMakeFiles/DA2proj_v1.dir/main.cpp.obj	610d9466d2c9e3b8
+3	452	7377630506570422	CMakeFiles/DA2proj_v1.dir/FileReaderToy.cpp.obj	b39f82f0638dc78f
+5	464	7377630506685547	CMakeFiles/DA2proj_v1.dir/worldGraph.cpp.obj	1268393b27bbf3d5
+1	872	7377630510741719	CMakeFiles/DA2proj_v1.dir/Menu.cpp.obj	568131b5467e5cc7
+872	1113	7377630513150625	DA2proj_v1.exe	edfbe5e18ad7243d
+1	388	7377636492768980	CMakeFiles/DA2proj_v1.dir/FileReaderToy.cpp.obj	b39f82f0638dc78f
+388	602	7377636494875668	DA2proj_v1.exe	edfbe5e18ad7243d
+2	383	7377636800623371	CMakeFiles/DA2proj_v1.dir/FileReaderToy.cpp.obj	b39f82f0638dc78f
+383	595	7377636802725514	DA2proj_v1.exe	edfbe5e18ad7243d

@@ -165,53 +165,30 @@ void FileReaderToy::add_all_places_coordinates(const std::string &filename , Wor
 
 void FileReaderToy::add_all_connections_coordinates(const std::string &filename, WorldGraph &OurGraph, int status)
 {
-	std::ifstream inputfile(filename);
+    std::ifstream inputfile(filename);
 
-	if (inputfile.is_open()) {
-		std::string line;
-		std::getline(inputfile, line);
+    if (!inputfile.is_open()) {
+        std::cout << "No file to open or wrong path selected for stations!" << std::endl;
+        return;
+    }
 
-		// Check if the first character of the line is '0'
-		if (!line.empty() && line[0] == '0') {
-			// Process the line only if it starts with '0'
-			std::istringstream iss(line);
-			std::string idOrigem, idChegada, distance;
-			if (std::getline(iss, idOrigem, ',') &&
-				std::getline(iss, idChegada, ',') &&
-				std::getline(iss, distance, ',')) {
-				Connection new_connection = Connection(std::stoi(idOrigem), std::stoi(idChegada), std::stod(distance));
-				if (status == 1) {
-					OurGraph.add_connection(new_connection, 1);
-				}
-				else {
-					OurGraph.add_connection(new_connection, 0);
-				}
-				}
-		}
+    std::string line;
+    while (std::getline(inputfile, line)) {
+        if (line.empty() || line[0] != '0') {
+            continue; // Skip lines that don't start with '0'
+        }
 
-		while (std::getline(inputfile, line)) {
-			while (!line.empty() && line.back() == ',') {
-				line.pop_back();
-			}
-			std::istringstream iss(line);
-			std::string idOrigem, idChegada, distance;
-			if (std::getline(iss, idOrigem, ',') &&
-				std::getline(iss, idChegada, ',') &&
-				std::getline(iss, distance, ',')) {
-				Connection new_connection = Connection(std::stoi(idOrigem), std::stoi(idChegada), std::stod(distance));
-				if (status == 1) {
-					OurGraph.add_connection(new_connection, 1);
-				}
-				else {
-					OurGraph.add_connection(new_connection, 0);
-				}
-				}
-			else {
-				std::cout << "No file to open or wrong path selected for stations!" << std::endl;
-			}
-		}
-		inputfile.close();
-	}
+        std::istringstream iss(line);
+        std::string idOrigem, idChegada, distance;
+        if (std::getline(iss, idOrigem, ',') &&
+            std::getline(iss, idChegada, ',') &&
+            std::getline(iss, distance, ',')) {
+            Connection new_connection = Connection(std::stoi(idOrigem), std::stoi(idChegada), std::stod(distance));
+            OurGraph.add_connection(new_connection, status);
+        }
+    }
+
+    inputfile.close();
 }
 
 
