@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['destroy_0',['destroy',['../_tarefas_8h.html#a36b74f0d1f4c36436f744416753a6476',1,'Tarefas.h']]]
+  ['edge_0',['Edge',['../class_edge.html',1,'']]],
+  ['exists_5fpath_1',['exists_path',['../_tarefas_8h.html#ac616606aeb1aaf22eae0d4fcfc3653d3',1,'Tarefas.h']]]
 ];

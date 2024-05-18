@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Tarefas.h File Reference</title>
+<title>Traveling Salesman Problem: Tarefas.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Traveling Salesman Problem
    </div>
   </td>
  </tr>
@@ -88,6 +88,7 @@ $(function() {
 <code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;complex&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
 </div>
 <p><a href="_tarefas_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -119,13 +120,20 @@ std::unordered_map&lt; int, bool &gt;&#160;</td><td class="memItemRight" valign=
 <tr class="separator:a20a0f6a948fd9537c1c4522266124224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac616606aeb1aaf22eae0d4fcfc3653d3" id="r_ac616606aeb1aaf22eae0d4fcfc3653d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac616606aeb1aaf22eae0d4fcfc3653d3">exists_path</a> (<a class="el" href="class_world_graph.html">WorldGraph</a> graph, <a class="el" href="class_world_graph.html">WorldGraph</a> util_graph, int start_id)</td></tr>
 <tr class="separator:ac616606aeb1aaf22eae0d4fcfc3653d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab04dc70ba13cff0c5a78748c343e38a5" id="r_ab04dc70ba13cff0c5a78748c343e38a5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab04dc70ba13cff0c5a78748c343e38a5">nearestNeighbor</a> (<a class="el" href="class_world_graph.html">WorldGraph</a> graph, int start)</td></tr>
-<tr class="separator:ab04dc70ba13cff0c5a78748c343e38a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36b74f0d1f4c36436f744416753a6476" id="r_a36b74f0d1f4c36436f744416753a6476"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36b74f0d1f4c36436f744416753a6476">destroy</a> (vector&lt; int &gt; current_sol, double rat)</td></tr>
-<tr class="separator:a36b74f0d1f4c36436f744416753a6476"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48ccec558556231820d0197c2102aa4e" id="r_a48ccec558556231820d0197c2102aa4e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48ccec558556231820d0197c2102aa4e">repair</a> (<a class="el" href="class_world_graph.html">WorldGraph</a> graph, vector&lt; int &gt; partial_sol)</td></tr>
-<tr class="separator:a48ccec558556231820d0197c2102aa4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a204cf9fd17ce3f7093d56bcccb120d58" id="r_a204cf9fd17ce3f7093d56bcccb120d58"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a204cf9fd17ce3f7093d56bcccb120d58">tsp_realworld</a> (<a class="el" href="class_world_graph.html">WorldGraph</a> &amp;graph, int start_id, int num_iterations, double rat)</td></tr>
+<tr class="memitem:af28f6aa939746124234f85978e437f2c" id="r_af28f6aa939746124234f85978e437f2c"><td class="memItemLeft" align="right" valign="top"><a id="af28f6aa939746124234f85978e437f2c" name="af28f6aa939746124234f85978e437f2c"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>nearestNeighbor</b> (<a class="el" href="class_world_graph.html">WorldGraph</a> &amp;graph, int start)</td></tr>
+<tr class="separator:af28f6aa939746124234f85978e437f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0885640135541f4e2eaac80ff0ed92" id="r_abc0885640135541f4e2eaac80ff0ed92"><td class="memItemLeft" align="right" valign="top"><a id="abc0885640135541f4e2eaac80ff0ed92" name="abc0885640135541f4e2eaac80ff0ed92"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> (std::vector&lt; int &gt; &amp;current_sol, int k)</td></tr>
+<tr class="separator:abc0885640135541f4e2eaac80ff0ed92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304fec925cace6f8dd35a1e5989af901" id="r_a304fec925cace6f8dd35a1e5989af901"><td class="memItemLeft" align="right" valign="top"><a id="a304fec925cace6f8dd35a1e5989af901" name="a304fec925cace6f8dd35a1e5989af901"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>repair</b> (<a class="el" href="class_world_graph.html">WorldGraph</a> &amp;graph, const std::vector&lt; int &gt; &amp;partial_sol)</td></tr>
+<tr class="separator:a304fec925cace6f8dd35a1e5989af901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa3eaf8ea4b8d519322bbe62a4b35435" id="r_afa3eaf8ea4b8d519322bbe62a4b35435"><td class="memItemLeft" align="right" valign="top"><a id="afa3eaf8ea4b8d519322bbe62a4b35435" name="afa3eaf8ea4b8d519322bbe62a4b35435"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>twoOpt</b> (<a class="el" href="class_world_graph.html">WorldGraph</a> &amp;graph, const std::vector&lt; int &gt; &amp;tour)</td></tr>
+<tr class="separator:afa3eaf8ea4b8d519322bbe62a4b35435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204cf9fd17ce3f7093d56bcccb120d58" id="r_a204cf9fd17ce3f7093d56bcccb120d58"><td class="memItemLeft" align="right" valign="top"><a id="a204cf9fd17ce3f7093d56bcccb120d58" name="a204cf9fd17ce3f7093d56bcccb120d58"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tsp_realworld</b> (<a class="el" href="class_world_graph.html">WorldGraph</a> &amp;graph, int start_id, int num_iterations, double rat)</td></tr>
 <tr class="separator:a204cf9fd17ce3f7093d56bcccb120d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af24670556656ab4dd9785c69ab0e6144" id="r_af24670556656ab4dd9785c69ab0e6144"><td class="memItemLeft" align="right" valign="top"><a id="af24670556656ab4dd9785c69ab0e6144" name="af24670556656ab4dd9785c69ab0e6144"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>printTspBacktrack</b> (<a class="el" href="class_world_graph.html">WorldGraph</a> &amp;graph)</td></tr>
@@ -202,34 +210,6 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><b>EARTH_RADIUS_
 
 </div>
 </div>
-<a id="a36b74f0d1f4c36436f744416753a6476" name="a36b74f0d1f4c36436f744416753a6476"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36b74f0d1f4c36436f744416753a6476">&#9670;&#160;</a></span>destroy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; int &gt; destroy </td>
-          <td>(</td>
-          <td class="paramtype">vector&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>current_sol</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>rat</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>returns took our random elements of the path </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">current_sol,rat</td><td>the current solution used for the problem and the percentage of items it ill remove Complexity O(n^2)</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ac616606aeb1aaf22eae0d4fcfc3653d3" name="ac616606aeb1aaf22eae0d4fcfc3653d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac616606aeb1aaf22eae0d4fcfc3653d3">&#9670;&#160;</a></span>exists_path()</h2>
 
@@ -257,34 +237,6 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><b>EARTH_RADIUS_
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">graph,util_graph,start_if</td><td>the graph we are searching Complexity O(n+m)</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab04dc70ba13cff0c5a78748c343e38a5" name="ab04dc70ba13cff0c5a78748c343e38a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab04dc70ba13cff0c5a78748c343e38a5">&#9670;&#160;</a></span>nearestNeighbor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; int &gt; nearestNeighbor </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_world_graph.html">WorldGraph</a></td>          <td class="paramname"><span class="paramname"><em>graph</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>start</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>return path acording the nearest neighbour algorithm </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">graph,start</td><td>the graph we are exploring and the start node Complexity O(n^2)</td></tr>
   </table>
   </dd>
 </dl>
@@ -337,72 +289,6 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><b>EARTH_RADIUS_
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">graph</td><td>the graph we will be using to find its mimimum path Complexity O(ElogV)</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a48ccec558556231820d0197c2102aa4e" name="a48ccec558556231820d0197c2102aa4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48ccec558556231820d0197c2102aa4e">&#9670;&#160;</a></span>repair()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; int &gt; repair </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_world_graph.html">WorldGraph</a></td>          <td class="paramname"><span class="paramname"><em>graph</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vector&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>partial_sol</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>a vector with the new solution after what was removed got rearranged </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">graph,partial_sol</td><td>the graph we are using and the partial solution we took out during the destroy Complexity O(n^2)</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a204cf9fd17ce3f7093d56bcccb120d58" name="a204cf9fd17ce3f7093d56bcccb120d58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a204cf9fd17ce3f7093d56bcccb120d58">&#9670;&#160;</a></span>tsp_realworld()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; int &gt; tsp_realworld </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_world_graph.html">WorldGraph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>graph</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>start_id</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>num_iterations</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>rat</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>a vector with the new solution according the Large_neighbpour_heuristic (LNS) </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">graph,start_id,num_iterations,rat</td><td>the graph we will be using the id of the starting node the numer of iterations we want (the more the best for better results) and the percentage of destruction it will have Complexity O(num_iter * (k + (n^2 + n^2)))</td></tr>
   </table>
   </dd>
 </dl>

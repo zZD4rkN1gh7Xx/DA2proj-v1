@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['place_0',['Place',['../class_place.html',1,'']]],
-  ['place_2eh_1',['place.h',['../place_8h.html',1,'']]],
-  ['preorderwalk_2',['preorderWalk',['../_tarefas_8h.html#ac3237082965c239c6c70f73f5b81e0cd',1,'Tarefas.h']]],
-  ['primmst_3',['PrimMST',['../_tarefas_8h.html#a62d917cb1a524726cc162f3f15690edc',1,'Tarefas.h']]]
+  ['tarefas_2eh_0',['Tarefas.h',['../_tarefas_8h.html',1,'']]],
+  ['tsp_5fsimulated_5fannealing_1',['tsp_simulated_annealing',['../_tarefas_8h.html#ad60fdf4345973ba3339212d96e417618',1,'Tarefas.h']]],
+  ['tsp_5ftriangular_5faprox_2',['tsp_triangular_aprox',['../_tarefas_8h.html#afa43e94154b7fb88a0382b86999a6cfd',1,'Tarefas.h']]],
+  ['tspbacktrack_3',['tspBacktrack',['../_tarefas_8h.html#aefe08b04087cff80befa0c1445d9f847',1,'Tarefas.h']]]
 ];

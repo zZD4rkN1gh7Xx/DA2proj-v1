@@ -19,25 +19,32 @@
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <limits>}}
 \DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <ctime>}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ :\textcolor{keyword}{public}\ \mbox{\hyperlink{class_graph}{Graph}}<Place>}
-\DoxyCodeLine{00026\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}();}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ add\_place(\mbox{\hyperlink{class_place}{Place}}\ place);}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ add\_connection(\mbox{\hyperlink{class_connection}{Connection}}\&\ connection,\ \textcolor{keywordtype}{int}\ status);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_place}{Place}}\ get\_place(\mbox{\hyperlink{class_place}{Place}}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge<Place>}}\ get\_connection(\textcolor{keywordtype}{int}\ id\_A,\ \textcolor{keywordtype}{int}\ id\_B);}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_all\_unvisited();}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ are\_all\_visited();}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ vector<Edge<Place>>\ sort\_edges();}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_connection}{Connection}}\ get\_min\_edge();}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::vector<int>\ random\_path();}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \textcolor{keyword}{template}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph}{Graph<Place>::addVertex}}(\mbox{\hyperlink{class_place}{Place}}\ \&in);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DAPROJ2\_V2\_WORLDGRAPH\_H}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ :\textcolor{keyword}{public}\ \mbox{\hyperlink{class_graph}{Graph}}<Place>}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::vector<shared\_ptr<Vertex<Place>>>\ vertex\_set;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::unordered\_map<int,\ std::vector<Connection>>\ adj\_list;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ unordered\_map<int,\ Place>\ place\_map;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ add\_place(\mbox{\hyperlink{class_place}{Place}}\ place);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ add\_connection(\mbox{\hyperlink{class_connection}{Connection}}\&\ connection,\ \textcolor{keywordtype}{int}\ status);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_place}{Place}}\ get\_place(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge<Place>}}\ get\_connection(\textcolor{keywordtype}{int}\ id\_A,\ \textcolor{keywordtype}{int}\ id\_B);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_all\_unvisited();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ are\_all\_visited();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ vector<Edge<Place>>\ sort\_edges();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_connection}{Connection}}\ get\_min\_edge();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ std::vector<int>\ random\_path();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{template}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph}{Graph<Place>::addVertex}}(\mbox{\hyperlink{class_place}{Place}}\ \&in);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DAPROJ2\_V2\_WORLDGRAPH\_H}}
 
 \end{DoxyCode}

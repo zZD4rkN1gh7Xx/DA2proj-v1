@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['graph_0',['Graph',['../class_graph.html',1,'']]],
-  ['graph_2eh_1',['Graph.h',['../_graph_8h.html',1,'']]],
-  ['graph_3c_20place_20_3e_2',['Graph&lt; Place &gt;',['../class_graph.html',1,'']]]
+  ['menu_0',['Menu',['../class_menu.html',1,'']]],
+  ['menu_2ecpp_1',['Menu.cpp',['../_menu_8cpp.html',1,'']]],
+  ['menu_2eh_2',['Menu.h',['../_menu_8h.html',1,'']]]
 ];
