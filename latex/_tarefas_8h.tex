@@ -1,0 +1,232 @@
+\doxysection{Tarefas.\+h File Reference}
+\hypertarget{_tarefas_8h}{}\label{_tarefas_8h}\index{Tarefas.h@{Tarefas.h}}
+
+
+algorithms we use to solve the probelm  
+
+
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$climits$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_tarefas_8h_a07e1c9c1ece199ae0454db48571b8683}{backtrack}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph, \mbox{\hyperlink{class_place}{Place}} place, std\+::vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \&path, double weight, double \&min\+\_\+weight, int count, std\+::vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \&min\+\_\+path)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \mbox{\hyperlink{_tarefas_8h_aefe08b04087cff80befa0c1445d9f847}{tsp\+Backtrack}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph)
+\item 
+\mbox{\hyperlink{class_world_graph}{World\+Graph}} \mbox{\hyperlink{_tarefas_8h_a62d917cb1a524726cc162f3f15690edc}{Prim\+MST}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_ac3237082965c239c6c70f73f5b81e0cd}{preorder\+Walk}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \texorpdfstring{$\ast$}{*}place)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_afa43e94154b7fb88a0382b86999a6cfd}{tsp\+\_\+triangular\+\_\+aprox}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph)
+\item 
+\Hypertarget{_tarefas_8h_a4b0512a191dd17d7f2b3e9f376af9540}\label{_tarefas_8h_a4b0512a191dd17d7f2b3e9f376af9540} 
+double {\bfseries calculate\+\_\+total\+\_\+distance} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph, const std\+::vector$<$ int $>$ \&path)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_ad60fdf4345973ba3339212d96e417618}{tsp\+\_\+simulated\+\_\+annealing}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph, double initial\+\_\+temperature, double cooling\+\_\+rate, int num\+\_\+iterations)
+\item 
+\Hypertarget{_tarefas_8h_a8e8b5d1633dfb57d0d6056850bdd710c}\label{_tarefas_8h_a8e8b5d1633dfb57d0d6056850bdd710c} 
+double {\bfseries to\+Radians} (double degrees)
+\item 
+\Hypertarget{_tarefas_8h_aec99f13d841a36f5c9c9b3ccbee31801}\label{_tarefas_8h_aec99f13d841a36f5c9c9b3ccbee31801} 
+double {\bfseries haversine} (\mbox{\hyperlink{class_place}{Place}} place\+\_\+A, \mbox{\hyperlink{class_place}{Place}} place\+\_\+B)
+\item 
+\Hypertarget{_tarefas_8h_a20a0f6a948fd9537c1c4522266124224}\label{_tarefas_8h_a20a0f6a948fd9537c1c4522266124224} 
+std\+::unordered\+\_\+map$<$ int, bool $>$ {\bfseries set\+\_\+not\+\_\+visited} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} graph)
+\item 
+bool \mbox{\hyperlink{_tarefas_8h_ac616606aeb1aaf22eae0d4fcfc3653d3}{exists\+\_\+path}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} graph, \mbox{\hyperlink{class_world_graph}{World\+Graph}} util\+\_\+graph, int start\+\_\+id)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_ab04dc70ba13cff0c5a78748c343e38a5}{nearest\+Neighbor}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} graph, int start)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_a36b74f0d1f4c36436f744416753a6476}{destroy}} (vector$<$ int $>$ current\+\_\+sol, double rat)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_a48ccec558556231820d0197c2102aa4e}{repair}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} graph, vector$<$ int $>$ partial\+\_\+sol)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{_tarefas_8h_a204cf9fd17ce3f7093d56bcccb120d58}{tsp\+\_\+realworld}} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph, int start\+\_\+id, int num\+\_\+iterations, double rat)
+\item 
+\Hypertarget{_tarefas_8h_af24670556656ab4dd9785c69ab0e6144}\label{_tarefas_8h_af24670556656ab4dd9785c69ab0e6144} 
+void {\bfseries print\+Tsp\+Backtrack} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph)
+\item 
+\Hypertarget{_tarefas_8h_a4a849b983b573fda1ccdcb4ab3b028be}\label{_tarefas_8h_a4a849b983b573fda1ccdcb4ab3b028be} 
+void {\bfseries print\+Triangular} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&graph)
+\item 
+\Hypertarget{_tarefas_8h_a4819baf74328bcd0fc3b622e417fbe8d}\label{_tarefas_8h_a4819baf74328bcd0fc3b622e417fbe8d} 
+void {\bfseries print\+\_\+tsp\+\_\+simulated\+\_\+annealing} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} graph, double temp, double cooling, int iterations)
+\item 
+\Hypertarget{_tarefas_8h_a0c60f663fa16b1a2ca3d565d87ba2168}\label{_tarefas_8h_a0c60f663fa16b1a2ca3d565d87ba2168} 
+void {\bfseries print\+\_\+tsp\+\_\+realworld} (\mbox{\hyperlink{class_world_graph}{World\+Graph}} graph, int start\+Id, int iterations, double ratio)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_tarefas_8h_aa3bcd0102edc51cffe538cf6519da620}\label{_tarefas_8h_aa3bcd0102edc51cffe538cf6519da620} 
+const double {\bfseries EARTH\+\_\+\+RADIUS\+\_\+\+KM} = 6371.\+0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+algorithms we use to solve the probelm 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_tarefas_8h_a07e1c9c1ece199ae0454db48571b8683}\label{_tarefas_8h_a07e1c9c1ece199ae0454db48571b8683} 
+\index{Tarefas.h@{Tarefas.h}!backtrack@{backtrack}}
+\index{backtrack@{backtrack}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{backtrack()}{backtrack()}}
+{\footnotesize\ttfamily void backtrack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph,  }\item[{\mbox{\hyperlink{class_place}{Place}}}]{place,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \&}]{path,  }\item[{double}]{weight,  }\item[{double \&}]{min\+\_\+weight,  }\item[{int}]{count,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \&}]{min\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+finds the way that has the minimum path distance traveled between the node 0 and itself passing trough all the other nodes only once 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph,place,path,weight,min\+\_\+weight,count,min\+\_\+path} & the graph we are currently using with the place we start(node 0) with on possible path the waight of the path and the smallest weight of a path in hte graph along with the minimum path Complexity O(V⋅\+V!)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_a36b74f0d1f4c36436f744416753a6476}\label{_tarefas_8h_a36b74f0d1f4c36436f744416753a6476} 
+\index{Tarefas.h@{Tarefas.h}!destroy@{destroy}}
+\index{destroy@{destroy}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ destroy (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{current\+\_\+sol,  }\item[{double}]{rat }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+returns took our random elements of the path 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+sol,rat} & the current solution used for the problem and the percentage of items it ill remove Complexity O(n\texorpdfstring{$^\wedge$}{\string^}2)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_ac616606aeb1aaf22eae0d4fcfc3653d3}\label{_tarefas_8h_ac616606aeb1aaf22eae0d4fcfc3653d3} 
+\index{Tarefas.h@{Tarefas.h}!exists\_path@{exists\_path}}
+\index{exists\_path@{exists\_path}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{exists\_path()}{exists\_path()}}
+{\footnotesize\ttfamily bool exists\+\_\+path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}}}]{graph,  }\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}}}]{util\+\_\+graph,  }\item[{int}]{start\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+return if there is a path from a node to itself going trough all the possible nodes 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph,util\+\_\+graph,start\+\_\+if} & the graph we are searching Complexity O(n+m)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_ab04dc70ba13cff0c5a78748c343e38a5}\label{_tarefas_8h_ab04dc70ba13cff0c5a78748c343e38a5} 
+\index{Tarefas.h@{Tarefas.h}!nearestNeighbor@{nearestNeighbor}}
+\index{nearestNeighbor@{nearestNeighbor}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{nearestNeighbor()}{nearestNeighbor()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ nearest\+Neighbor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}}}]{graph,  }\item[{int}]{start }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+return path acording the nearest neighbour algorithm 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph,start} & the graph we are exploring and the start node Complexity O(n\texorpdfstring{$^\wedge$}{\string^}2)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_ac3237082965c239c6c70f73f5b81e0cd}\label{_tarefas_8h_ac3237082965c239c6c70f73f5b81e0cd} 
+\index{Tarefas.h@{Tarefas.h}!preorderWalk@{preorderWalk}}
+\index{preorderWalk@{preorderWalk}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{preorderWalk()}{preorderWalk()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ preorder\+Walk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_place}{Place}} $>$ \texorpdfstring{$\ast$}{*}}]{place }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+returns the order we visit the nodes to go to all 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph,place} & the graph we are using and the node we want to start Complexity O(V+E)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_a62d917cb1a524726cc162f3f15690edc}\label{_tarefas_8h_a62d917cb1a524726cc162f3f15690edc} 
+\index{Tarefas.h@{Tarefas.h}!PrimMST@{PrimMST}}
+\index{PrimMST@{PrimMST}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{PrimMST()}{PrimMST()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world_graph}{World\+Graph}} Prim\+MST (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+returs an MST of the graph starting on the node with id 0 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & the graph we will be using to find its mimimum path Complexity O(\+Elog\+V)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_a48ccec558556231820d0197c2102aa4e}\label{_tarefas_8h_a48ccec558556231820d0197c2102aa4e} 
+\index{Tarefas.h@{Tarefas.h}!repair@{repair}}
+\index{repair@{repair}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{repair()}{repair()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ repair (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}}}]{graph,  }\item[{vector$<$ int $>$}]{partial\+\_\+sol }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector with the new solution after what was removed got rearranged 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph,partial\+\_\+sol} & the graph we are using and the partial solution we took out during the destroy Complexity O(n\texorpdfstring{$^\wedge$}{\string^}2)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_a204cf9fd17ce3f7093d56bcccb120d58}\label{_tarefas_8h_a204cf9fd17ce3f7093d56bcccb120d58} 
+\index{Tarefas.h@{Tarefas.h}!tsp\_realworld@{tsp\_realworld}}
+\index{tsp\_realworld@{tsp\_realworld}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{tsp\_realworld()}{tsp\_realworld()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ tsp\+\_\+realworld (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph,  }\item[{int}]{start\+\_\+id,  }\item[{int}]{num\+\_\+iterations,  }\item[{double}]{rat }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector with the new solution according the Large\+\_\+neighbpour\+\_\+heuristic (LNS) 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph,start\+\_\+id,num\+\_\+iterations,rat} & the graph we will be using the id of the starting node the numer of iterations we want (the more the best for better results) and the percentage of destruction it will have Complexity O(num\+\_\+iter \texorpdfstring{$\ast$}{*} (k + (n\texorpdfstring{$^\wedge$}{\string^}2 + n\texorpdfstring{$^\wedge$}{\string^}2)))\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_ad60fdf4345973ba3339212d96e417618}\label{_tarefas_8h_ad60fdf4345973ba3339212d96e417618} 
+\index{Tarefas.h@{Tarefas.h}!tsp\_simulated\_annealing@{tsp\_simulated\_annealing}}
+\index{tsp\_simulated\_annealing@{tsp\_simulated\_annealing}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{tsp\_simulated\_annealing()}{tsp\_simulated\_annealing()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ tsp\+\_\+simulated\+\_\+annealing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph,  }\item[{double}]{initial\+\_\+temperature,  }\item[{double}]{cooling\+\_\+rate,  }\item[{int}]{num\+\_\+iterations }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+return the path acording to the simulated\+\_\+anealing\+\_\+heuristic 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & the graph we are searching Complexity O(n\texorpdfstring{$^\wedge$}{\string^}4)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_afa43e94154b7fb88a0382b86999a6cfd}\label{_tarefas_8h_afa43e94154b7fb88a0382b86999a6cfd} 
+\index{Tarefas.h@{Tarefas.h}!tsp\_triangular\_aprox@{tsp\_triangular\_aprox}}
+\index{tsp\_triangular\_aprox@{tsp\_triangular\_aprox}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{tsp\_triangular\_aprox()}{tsp\_triangular\_aprox()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ tsp\+\_\+triangular\+\_\+aprox (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+return the path acording to the triagular aproximation 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & the graph we are searching Complexity O(V!)\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_tarefas_8h_aefe08b04087cff80befa0c1445d9f847}\label{_tarefas_8h_aefe08b04087cff80befa0c1445d9f847} 
+\index{Tarefas.h@{Tarefas.h}!tspBacktrack@{tspBacktrack}}
+\index{tspBacktrack@{tspBacktrack}!Tarefas.h@{Tarefas.h}}
+\doxysubsubsection{\texorpdfstring{tspBacktrack()}{tspBacktrack()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_place}{Place}} $>$ tsp\+Backtrack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world_graph}{World\+Graph}} \&}]{graph }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+returs the minimal path using a backtrack algorithm 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & the graph we will be using to find its mimimum path Complexity O(V⋅\+V⋅\+V!)\\
+\hline
+\end{DoxyParams}

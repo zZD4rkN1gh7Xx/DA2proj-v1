@@ -10,7 +10,10 @@
 #include <complex>
 #include <cmath>
 
-
+/**
+    *@file tarefas.h
+    *@brief algorithms we use to solve the probelm
+*/
 
 
 void backtrack(WorldGraph& graph, Place place, std::vector<Place>& path, double weight, double& min_weight, int count, std::vector<Place>& min_path) {
@@ -128,7 +131,7 @@ std::vector<int> tsp_triangular_aprox(WorldGraph& graph)
 {
     /**
     *@return return the path acording to the triagular aproximation
-    *@param graph, the graph we are searching
+    *@param graph the graph we are searching
     Complexity O(V!)*/
 
     vector<int> triangular_aprox;
@@ -173,19 +176,16 @@ double calculate_total_distance(WorldGraph& graph, const std::vector<int>& path)
 
         total_distance += connection.getWeight();
     }
-
-
-
     return total_distance;
 }
 
-// for later usage: (initial_temperature,  cooling_rate,  num_iterations)
-// LARGE GRAPHS - (1000.0, 0.999, 10000)
-// MEDIAN GRAPHS - (100.0, 0.995, 5000)
-// LARGE GRAPHS - (10.0, 0.99, 3000)
-
 std::vector<int> tsp_simulated_annealing(WorldGraph& graph, double initial_temperature, double cooling_rate, int num_iterations)
 {
+    /**
+    *@return return the path acording to the simulated_anealing_heuristic
+    *@param graph the graph we are searching
+    Complexity O(n^4)*/
+
     graph.set_all_unvisited();
 
     std::vector<int> current_solution = tsp_triangular_aprox(graph);
@@ -263,8 +263,13 @@ std::unordered_map<int,bool> set_not_visited(WorldGraph graph)
 
 bool exists_path(WorldGraph graph,WorldGraph util_graph , int start_id)
 {
-    unordered_map<int, bool> visited = set_not_visited(graph);
 
+    /**
+    *@return return if there is a path from a node to itself going trough all the possible nodes
+    *@param graph,util_graph,start_if the graph we are searching
+    Complexity O(n+m)*/
+
+    unordered_map<int, bool> visited = set_not_visited(graph);
 
     int n = graph.getNumVertex();
     if (start_id < 0 || start_id >= n) {
@@ -307,7 +312,13 @@ bool exists_path(WorldGraph graph,WorldGraph util_graph , int start_id)
 }
 
 
-std::vector<int> nearestNeighbor(WorldGraph graph, int start) {
+std::vector<int> nearestNeighbor(WorldGraph graph, int start)
+{
+    /**
+    *@return return  path acording the nearest neighbour algorithm
+    *@param graph,start the graph we are exploring and the start node
+    Complexity O(n^2)*/
+
     int numCities = graph.getNumVertex();
     std::unordered_map<int,bool> visited = set_not_visited(graph);
     std::vector<int> tour;
@@ -351,6 +362,11 @@ std::vector<int> nearestNeighbor(WorldGraph graph, int start) {
 std::vector<int> destroy(vector<int> current_sol,double rat)
 {
 
+    /**
+    *@return returns took our random elements of the path
+    *@param current_sol,rat the current solution used for the problem and the percentage of items it ill remove
+    Complexity O(n^2)*/
+
     std::vector<int> partial_sol = current_sol;
 
     int numNodesToRemove = rat * current_sol.size();
@@ -368,6 +384,11 @@ std::vector<int> destroy(vector<int> current_sol,double rat)
 
 std::vector<int> repair(WorldGraph graph, vector<int> partial_sol)
 {
+    /**
+    *@return a vector with the new solution after what was removed got rearranged
+    *@param  graph,partial_sol the graph we are using and the partial solution we took out during the destroy
+    Complexity O(n^2)*/
+
     int startNode = partial_sol.back();
     return nearestNeighbor(graph, startNode);
 }
@@ -377,6 +398,12 @@ std::vector<int> repair(WorldGraph graph, vector<int> partial_sol)
 
 std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iterations, double rat)
 {
+
+    /**
+    *@return a vector with the new solution according the Large_neighbpour_heuristic (LNS)
+    *@param  graph,start_id,num_iterations,rat the graph we will be using the id of the starting node the numer of iterations we want (the more the best for better results) and the percentage of destruction it will have
+    Complexity O(num_iter * (k + (n^2 + n^2)))*/
+
     std::vector<int> current_solution;
 
     // Create a utility graph (if needed) - check if this is necessary

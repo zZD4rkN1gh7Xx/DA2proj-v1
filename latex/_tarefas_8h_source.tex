@@ -1,5 +1,5 @@
 \doxysection{Tarefas.\+h}
-\hypertarget{_tarefas_8h_source}{}\label{_tarefas_8h_source}
+\hypertarget{_tarefas_8h_source}{}\label{_tarefas_8h_source}\mbox{\hyperlink{_tarefas_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TAREFAS\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TAREFAS\_H}}
@@ -12,396 +12,420 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <complex>}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <omp.h>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}worldGraph.h"{}}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ backtrack(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \mbox{\hyperlink{class_place}{Place}}\ place,\ std::vector<Place>\&\ path,\ \textcolor{keywordtype}{double}\ weight,\ \textcolor{keywordtype}{double}\&\ min\_weight,\ \textcolor{keywordtype}{int}\ count,\ std::vector<Place>\&\ min\_path)\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ ((count\ ==\ graph.getNumVertex()\ +\ 1)\ \&\&\ place.get\_id()\ ==\ 0)\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (weight\ <\ min\_weight)\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ min\_weight\ =\ weight;}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ min\_path\ =\ path;}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00023\ \ \ \ \ \}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p\ :\ graph.findVertex(place)-\/>getAdj())\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!p.getDest()-\/>isVisited())\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ p.getDest()-\/>setVisited(\textcolor{keyword}{true});}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(p.getDest()-\/>getInfo());}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ backtrack(graph,\ p.getDest()-\/>getInfo(),\ path,\ weight\ +\ p.getWeight(),\ min\_weight,\ count\ +\ 1,\ min\_path);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ path.pop\_back();}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ p.getDest()-\/>setVisited(\textcolor{keyword}{false});}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00034\ \ \ \ \ \}}
-\DoxyCodeLine{00035\ \}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ std::vector<Place>\ tspBacktrack(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ std::vector<Place>\ min\_path;}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_weight\ =\ INT\_MAX;}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ a\ :\ graph.getVertexSet())\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ a-\/>setVisited(\textcolor{keyword}{false});}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_tarefas_8h_a07e1c9c1ece199ae0454db48571b8683}{backtrack}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \mbox{\hyperlink{class_place}{Place}}\ place,\ std::vector<Place>\&\ path,\ \textcolor{keywordtype}{double}\ weight,\ \textcolor{keywordtype}{double}\&\ min\_weight,\ \textcolor{keywordtype}{int}\ count,\ std::vector<Place>\&\ min\_path)\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ ((count\ ==\ graph.getNumVertex()\ +\ 1)\ \&\&\ place.get\_id()\ ==\ 0)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (weight\ <\ min\_weight)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ min\_weight\ =\ weight;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ min\_path\ =\ path;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p\ :\ graph.findVertex(place)-\/>getAdj())\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!p.getDest()-\/>isVisited())\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ p.getDest()-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(p.getDest()-\/>getInfo());}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_tarefas_8h_a07e1c9c1ece199ae0454db48571b8683}{backtrack}}(graph,\ p.getDest()-\/>getInfo(),\ path,\ weight\ +\ p.getWeight(),\ min\_weight,\ count\ +\ 1,\ min\_path);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ path.pop\_back();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ p.getDest()-\/>setVisited(\textcolor{keyword}{false});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00043\ \ \ \ \ \}}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ std::vector<Place>\ path\{\ graph.get\_place(0)\ \};}
-\DoxyCodeLine{00046\ \ \ \ \ backtrack(graph,\ graph.get\_place(0),\ path,\ 0,\ min\_weight,\ 1,\ min\_path);\ \textcolor{comment}{//\ Start\ from\ the\ first\ node}}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ std::vector<Place>\ \mbox{\hyperlink{_tarefas_8h_aefe08b04087cff80befa0c1445d9f847}{tspBacktrack}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \{}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ min\_path;}
-\DoxyCodeLine{00049\ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ PrimMST(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \textcolor{comment}{//\ opa\ como\ vamos\ sempre\ começar\ pelo\ node\ 0\ acho\ que\ ta\ chill\ nao\ por\ por\ onde\ e\ que\ o\ algoritmo\ começa\ ne?}}
-\DoxyCodeLine{00054\ \{}
-\DoxyCodeLine{00055\ \ \ \ \ graph.set\_all\_unvisited();\ \textcolor{comment}{//\ dar\ \ set\ a\ todos\ os\ nodes\ a\ unvisited}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ MST\_graph;\ \textcolor{comment}{//\ novo\ grafo\ que\ vai\ ficar\ com\ a\ MST}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\&\ graph\_place\ :\ graph.getVertexSet())\ \textcolor{comment}{//\ vai\ adicionar\ todos\ os\ vertexes\ ao\ novo\ MST\ graph}}
-\DoxyCodeLine{00060\ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ MST\_graph.add\_place(graph\_place-\/>getInfo());}
-\DoxyCodeLine{00062\ \ \ \ \ \}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_vertex}{Vertex<Place>}}\ *\ start\_place\ =\ graph.findVertex(graph.get\_place(0));\ \textcolor{comment}{//\ vai\ buscar\ o\ vertex\ do\ place\ com\ id==0}}
-\DoxyCodeLine{00065\ \ \ \ \ start\_place-\/>setVisited(\textcolor{keyword}{true});\ \textcolor{comment}{//\ dar\ visit\ ao\ start\ place\ para\ ele\ nao\ voltar\ a\ ser\ visitado}}
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<Place>\ min\_path;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ min\_weight\ =\ INT\_MAX;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ a\ :\ graph.getVertexSet())\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ a-\/>setVisited(\textcolor{keyword}{false});}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<Place>\ path\{\ graph.get\_place(0)\ \};}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{_tarefas_8h_a07e1c9c1ece199ae0454db48571b8683}{backtrack}}(graph,\ graph.get\_place(0),\ path,\ 0,\ min\_weight,\ 1,\ min\_path);\ \textcolor{comment}{//\ Start\ from\ the\ first\ node}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ min\_path;}
+\DoxyCodeLine{00064\ \}}
+\DoxyCodeLine{00065\ }
 \DoxyCodeLine{00066\ }
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{while}(!graph.are\_all\_visited())}
-\DoxyCodeLine{00069\ \ \ \ \ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_connection}{Connection}}\ min\_connection\ =\ graph.get\_min\_edge();}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ MST\_graph.add\_connection(min\_connection,0);}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ graph.findVertex(graph.get\_place(min\_connection.get\_id\_B()))-\/>setVisited(\textcolor{keyword}{true});}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ \mbox{\hyperlink{_tarefas_8h_a62d917cb1a524726cc162f3f15690edc}{PrimMST}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \textcolor{comment}{//\ opa\ como\ vamos\ sempre\ começar\ pelo\ node\ 0\ acho\ que\ ta\ chill\ nao\ por\ por\ onde\ e\ que\ o\ algoritmo\ começa\ ne?}}
+\DoxyCodeLine{00069\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ graph.set\_all\_unvisited();\ \textcolor{comment}{//\ dar\ \ set\ a\ todos\ os\ nodes\ a\ unvisited}}
 \DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ MST\_graph;}
-\DoxyCodeLine{00078\ \}}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ std::vector<int>\ preorderWalk(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \mbox{\hyperlink{class_vertex}{Vertex<Place>}}\ *\ place)}
-\DoxyCodeLine{00081\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ std::vector<int>\ traversalOrder;}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ MST\_graph;\ \textcolor{comment}{//\ novo\ grafo\ que\ vai\ ficar\ com\ a\ MST}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\&\ graph\_place\ :\ graph.getVertexSet())\ \textcolor{comment}{//\ vai\ adicionar\ todos\ os\ vertexes\ ao\ novo\ MST\ graph}}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ MST\_graph.add\_place(graph\_place-\/>getInfo());}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
 \DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{if}(!place)}
-\DoxyCodeLine{00085\ \ \ \ \ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ traversalOrder;}
-\DoxyCodeLine{00087\ \ \ \ \ \}}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \ \ place-\/>setVisited(\textcolor{keyword}{true});}
-\DoxyCodeLine{00090\ \ \ \ \ traversalOrder.push\_back(place-\/>getInfo().get\_id());}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{class_vertex}{Vertex<Place>}}\ *\ start\_place\ =\ graph.findVertex(graph.get\_place(0));\ \textcolor{comment}{//\ vai\ buscar\ o\ vertex\ do\ place\ com\ id==0}}
+\DoxyCodeLine{00085\ \ \ \ \ start\_place-\/>setVisited(\textcolor{keyword}{true});\ \textcolor{comment}{//\ dar\ visit\ ao\ start\ place\ para\ ele\ nao\ voltar\ a\ ser\ visitado}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{while}(!graph.are\_all\_visited())}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_connection}{Connection}}\ min\_connection\ =\ graph.get\_min\_edge();}
 \DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ next\_place\ :\ place-\/>getAdj())}
-\DoxyCodeLine{00093\ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!next\_place.getDest()-\/>isVisited())}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ adjTraversal\ =\ preorderWalk(graph,\ next\_place.getDest());}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ traversalOrder.insert(traversalOrder.end(),\ adjTraversal.begin(),\ adjTraversal.end());}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00099\ \ \ \ \ \}}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{return}\ traversalOrder;}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ \}}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ std::vector<int>\ tsp\_triangular\_aprox(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)}
-\DoxyCodeLine{00106\ \{}
-\DoxyCodeLine{00107\ \ \ \ \ vector<int>\ triangular\_aprox;}
-\DoxyCodeLine{00108\ \ \ \ \ std::unordered\_map<int,int>\ hamiltonian\_path;}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ MST\_graph\ =\ PrimMST(graph);}
-\DoxyCodeLine{00111\ \ \ \ \ MST\_graph.set\_all\_unvisited();}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{class_vertex}{Vertex<Place>}}\ *\ first\_place\ =\ MST\_graph.findVertex(MST\_graph.get\_place(0));}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00115\ \ \ \ \ std::vector<int>\ pre\_order\_walk\ =\ preorderWalk(MST\_graph,\ first\_place);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ MST\_graph.add\_connection(min\_connection,0);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ graph.findVertex(graph.get\_place(min\_connection.get\_id\_B()))-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{return}\ MST\_graph;}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_ac3237082965c239c6c70f73f5b81e0cd}{preorderWalk}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \mbox{\hyperlink{class_vertex}{Vertex<Place>}}\ *\ place)}
+\DoxyCodeLine{00101\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ std::vector<int>\ traversalOrder;}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{if}(!place)}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ traversalOrder;}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ place-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00115\ \ \ \ \ traversalOrder.push\_back(place-\/>getInfo().get\_id());}
 \DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ place\ :\ MST\_graph.getVertexSet())}
-\DoxyCodeLine{00119\ \ \ \ \ \{}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ hamiltonian\_path[place-\/>getInfo().get\_id()]\ =\ 0;}
-\DoxyCodeLine{00121\ \ \ \ \ \}}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ place:\ pre\_order\_walk)}
-\DoxyCodeLine{00124\ \ \ \ \ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hamiltonian\_path[place]\ ==\ 0)}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ hamiltonian\_path[place]\ =\ 1;}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ triangular\_aprox.push\_back(place);}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00130\ \ \ \ \ \}}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \ \ \ \ triangular\_aprox.push\_back(0);\ \textcolor{comment}{//\ assim\ começa\ e\ acaba\ no\ mesmo\ sitio\ como\ pretendido}}
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return}\ triangular\_aprox;}
-\DoxyCodeLine{00134\ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \textcolor{keywordtype}{double}\ calculate\_total\_distance(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \textcolor{keyword}{const}\ std::vector<int>\&\ path)}
-\DoxyCodeLine{00137\ \{}
-\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{double}\ total\_distance\ =\ 0.0;}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ next\_place\ :\ place-\/>getAdj())}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!next\_place.getDest()-\/>isVisited())}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ adjTraversal\ =\ \mbox{\hyperlink{_tarefas_8h_ac3237082965c239c6c70f73f5b81e0cd}{preorderWalk}}(graph,\ next\_place.getDest());}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ traversalOrder.insert(traversalOrder.end(),\ adjTraversal.begin(),\ adjTraversal.end());}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ traversalOrder;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_afa43e94154b7fb88a0382b86999a6cfd}{tsp\_triangular\_aprox}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ vector<int>\ triangular\_aprox;}
+\DoxyCodeLine{00138\ \ \ \ \ std::unordered\_map<int,int>\ hamiltonian\_path;}
 \DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ path.size()\ -\/\ 1;\ ++i)\ \{}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_place}{Place}}\ current\_place\ =\ graph.get\_place(path[i]);}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_place}{Place}}\ next\_place\ =\ graph.get\_place(path[i\ +\ 1]);}
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ MST\_graph\ =\ \mbox{\hyperlink{_tarefas_8h_a62d917cb1a524726cc162f3f15690edc}{PrimMST}}(graph);}
+\DoxyCodeLine{00141\ \ \ \ \ MST\_graph.set\_all\_unvisited();}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{class_vertex}{Vertex<Place>}}\ *\ first\_place\ =\ MST\_graph.findVertex(MST\_graph.get\_place(0));}
 \DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge<Place>}}\ connection\ =\ graph.get\_connection(current\_place.get\_id(),\ next\_place.get\_id());}
+\DoxyCodeLine{00145\ \ \ \ \ std::vector<int>\ pre\_order\_walk\ =\ \mbox{\hyperlink{_tarefas_8h_ac3237082965c239c6c70f73f5b81e0cd}{preorderWalk}}(MST\_graph,\ first\_place);}
 \DoxyCodeLine{00146\ }
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ total\_distance\ +=\ connection.getWeight();}
-\DoxyCodeLine{00148\ \ \ \ \ \}}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ }
-\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{return}\ total\_distance;}
-\DoxyCodeLine{00152\ \}}
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00154\ \textcolor{comment}{//\ for\ later\ usage:\ (initial\_temperature,\ \ cooling\_rate,\ \ num\_iterations)}}
-\DoxyCodeLine{00155\ \textcolor{comment}{//\ LARGE\ GRAPHS\ -\/\ (1000.0,\ 0.999,\ 10000)}}
-\DoxyCodeLine{00156\ \textcolor{comment}{//\ MEDIAN\ GRAPHS\ -\/\ (100.0,\ 0.995,\ 5000)}}
-\DoxyCodeLine{00157\ \textcolor{comment}{//\ LARGE\ GRAPHS\ -\/\ (10.0,\ 0.99,\ 3000)}}
-\DoxyCodeLine{00158\ }
-\DoxyCodeLine{00159\ std::vector<int>\ tsp\_simulated\_annealing(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \textcolor{keywordtype}{double}\ initial\_temperature,\ \textcolor{keywordtype}{double}\ cooling\_rate,\ \textcolor{keywordtype}{int}\ num\_iterations)}
-\DoxyCodeLine{00160\ \{}
-\DoxyCodeLine{00161\ \ \ \ \ graph.set\_all\_unvisited();}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \ \ \ \ std::vector<int>\ current\_solution\ =\ tsp\_triangular\_aprox(graph);}
-\DoxyCodeLine{00164\ }
-\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_distance\ =\ calculate\_total\_distance(graph,\ current\_solution);}
-\DoxyCodeLine{00166\ }
-\DoxyCodeLine{00167\ \ \ \ \ std::vector<int>\ best\_solution\ =\ current\_solution;}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{double}\ best\_distance\ =\ current\_distance;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ place\ :\ MST\_graph.getVertexSet())}
+\DoxyCodeLine{00149\ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ hamiltonian\_path[place-\/>getInfo().get\_id()]\ =\ 0;}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ place:\ pre\_order\_walk)}
+\DoxyCodeLine{00154\ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hamiltonian\_path[place]\ ==\ 0)}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ hamiltonian\_path[place]\ =\ 1;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ triangular\_aprox.push\_back(place);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ triangular\_aprox.push\_back(0);\ \textcolor{comment}{//\ assim\ começa\ e\ acaba\ no\ mesmo\ sitio\ como\ pretendido}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordflow}{return}\ triangular\_aprox;}
+\DoxyCodeLine{00164\ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{keywordtype}{double}\ calculate\_total\_distance(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \textcolor{keyword}{const}\ std::vector<int>\&\ path)}
+\DoxyCodeLine{00167\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{double}\ total\_distance\ =\ 0.0;}
 \DoxyCodeLine{00169\ }
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_temperature\ =\ initial\_temperature;}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ path.size()\ -\/\ 1;\ ++i)\ \{}
 \DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ num\_iterations;\ ++i)}
-\DoxyCodeLine{00173\ \ \ \ \ \{}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ std::vector<int>\ new\_solution\ =\ current\_solution;}
-\DoxyCodeLine{00175\ }
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index1\ =\ std::rand()\ \%\ (new\_solution.size()\ -\/\ 2)\ +\ 1;}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index2\ =\ std::rand()\ \%\ (new\_solution.size()\ -\/\ 2)\ +\ 1;}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ std::swap(new\_solution[index1],\ new\_solution[index2]);}
-\DoxyCodeLine{00179\ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ new\_distance\ =\ calculate\_total\_distance(graph,\ new\_solution);}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ delta\_distance\ =\ new\_distance\ -\/\ current\_distance;}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delta\_distance\ <\ 0\ ||\ std::exp(-\/delta\_distance\ /\ current\_temperature)\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(std::rand())\ /\ RAND\_MAX)}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ current\_solution\ =\ new\_solution;}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ current\_distance\ =\ new\_distance;}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_distance\ <\ best\_distance)}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ best\_solution\ =\ new\_solution;}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ best\_distance\ =\ new\_distance;}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_place}{Place}}\ current\_place\ =\ graph.get\_place(path[i]);}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_place}{Place}}\ next\_place\ =\ graph.get\_place(path[i\ +\ 1]);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge<Place>}}\ connection\ =\ graph.get\_connection(current\_place.get\_id(),\ next\_place.get\_id());}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ total\_distance\ +=\ connection.getWeight();}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{return}\ total\_distance;}
+\DoxyCodeLine{00180\ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_ad60fdf4345973ba3339212d96e417618}{tsp\_simulated\_annealing}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \textcolor{keywordtype}{double}\ initial\_temperature,\ \textcolor{keywordtype}{double}\ cooling\_rate,\ \textcolor{keywordtype}{int}\ num\_iterations)}
+\DoxyCodeLine{00183\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ graph.set\_all\_unvisited();}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ std::vector<int>\ current\_solution\ =\ \mbox{\hyperlink{_tarefas_8h_afa43e94154b7fb88a0382b86999a6cfd}{tsp\_triangular\_aprox}}(graph);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_distance\ =\ calculate\_total\_distance(graph,\ current\_solution);}
 \DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ current\_temperature\ *=\ cooling\_rate;}
-\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ std::vector<int>\ best\_solution\ =\ current\_solution;}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{double}\ best\_distance\ =\ current\_distance;}
 \DoxyCodeLine{00197\ }
-\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{return}\ best\_solution;}
-\DoxyCodeLine{00199\ \}}
-\DoxyCodeLine{00200\ }
-\DoxyCodeLine{00201\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ EARTH\_RADIUS\_KM\ =\ 6371.0;}
-\DoxyCodeLine{00202\ }
-\DoxyCodeLine{00203\ \textcolor{keywordtype}{double}\ toRadians(\textcolor{keywordtype}{double}\ degrees)\ \{}
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{return}\ degrees\ *\ M\_PI\ /\ 180.0;}
-\DoxyCodeLine{00205\ \}}
-\DoxyCodeLine{00206\ }
-\DoxyCodeLine{00207\ \textcolor{keywordtype}{double}\ haversine(\mbox{\hyperlink{class_place}{Place}}\ place\_A,\ \mbox{\hyperlink{class_place}{Place}}\ place\_B)\ \{}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{double}\ \ lat\_A\ =\ toRadians(place\_A.get\_latitude());}
-\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordtype}{double}\ lon\_A=\ toRadians(place\_A.get\_longitude());}
-\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{double}\ \ lat\_B\ =\ toRadians(place\_B.get\_latitude());}
-\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{double}\ \ lon\_B\ =\ toRadians(place\_B.get\_longitude());}
-\DoxyCodeLine{00213\ }
-\DoxyCodeLine{00214\ }
-\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{double}\ dlat\ =\ lat\_B\ -\/\ lat\_A;}
-\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{double}\ dlon\ =\ lon\_B\ -\/\ lon\_A;}
-\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ std::sin(dlat\ /\ 2)\ *\ std::sin(dlat\ /\ 2)\ +\ std::cos(lat\_A)\ *\ std::cos(lat\_B)\ *\ std::sin(dlon\ /\ 2)\ *\ std::sin(dlon\ /\ 2);}
-\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordtype}{double}\ c\ =\ 2\ *\ std::atan2(std::sqrt(a),\ std::sqrt(1\ -\/\ a));}
-\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ EARTH\_RADIUS\_KM\ *\ c;}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{return}\ distance;}
-\DoxyCodeLine{00222\ \}}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00224\ std::unordered\_map<int,bool>\ set\_not\_visited(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph)}
-\DoxyCodeLine{00225\ \{}
-\DoxyCodeLine{00226\ \ \ \ \ std::unordered\_map<int,bool>\ visited;}
-\DoxyCodeLine{00227\ }
-\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ k\ :\ graph.getVertexSet())}
-\DoxyCodeLine{00229\ \ \ \ \ \{}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ visited[k-\/>getInfo().get\_id()]\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00231\ \ \ \ \ \}}
-\DoxyCodeLine{00232\ }
-\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordflow}{return}\ visited;}
-\DoxyCodeLine{00234\ \}}
-\DoxyCodeLine{00235\ }
-\DoxyCodeLine{00236\ \textcolor{keywordtype}{bool}\ exists\_path(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ util\_graph\ ,\ \textcolor{keywordtype}{int}\ start\_id)}
-\DoxyCodeLine{00237\ \{}
-\DoxyCodeLine{00238\ \ \ \ \ unordered\_map<int,\ bool>\ visited\ =\ set\_not\_visited(graph);}
-\DoxyCodeLine{00239\ }
-\DoxyCodeLine{00240\ }
-\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ graph.getNumVertex();}
-\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\_id\ <\ 0\ ||\ start\_id\ >=\ n)\ \{}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Invalid\ start\ ID"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00245\ \ \ \ \ \}}
-\DoxyCodeLine{00246\ }
-\DoxyCodeLine{00247\ \ \ \ \ std::queue<int>\ q;}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_temperature\ =\ initial\_temperature;}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ num\_iterations;\ ++i)}
+\DoxyCodeLine{00201\ \ \ \ \ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ std::vector<int>\ new\_solution\ =\ current\_solution;}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index1\ =\ std::rand()\ \%\ (new\_solution.size()\ -\/\ 2)\ +\ 1;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index2\ =\ std::rand()\ \%\ (new\_solution.size()\ -\/\ 2)\ +\ 1;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ std::swap(new\_solution[index1],\ new\_solution[index2]);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ new\_distance\ =\ calculate\_total\_distance(graph,\ new\_solution);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ delta\_distance\ =\ new\_distance\ -\/\ current\_distance;}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delta\_distance\ <\ 0\ ||\ std::exp(-\/delta\_distance\ /\ current\_temperature)\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(std::rand())\ /\ RAND\_MAX)}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ current\_solution\ =\ new\_solution;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ current\_distance\ =\ new\_distance;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_distance\ <\ best\_distance)}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ best\_solution\ =\ new\_solution;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ best\_distance\ =\ new\_distance;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ current\_temperature\ *=\ cooling\_rate;}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordflow}{return}\ best\_solution;}
+\DoxyCodeLine{00227\ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ EARTH\_RADIUS\_KM\ =\ 6371.0;}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{keywordtype}{double}\ toRadians(\textcolor{keywordtype}{double}\ degrees)\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{return}\ degrees\ *\ M\_PI\ /\ 180.0;}
+\DoxyCodeLine{00233\ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \textcolor{keywordtype}{double}\ haversine(\mbox{\hyperlink{class_place}{Place}}\ place\_A,\ \mbox{\hyperlink{class_place}{Place}}\ place\_B)\ \{}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{double}\ \ lat\_A\ =\ toRadians(place\_A.get\_latitude());}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{double}\ lon\_A=\ toRadians(place\_A.get\_longitude());}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{double}\ \ lat\_B\ =\ toRadians(place\_B.get\_latitude());}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{double}\ \ lon\_B\ =\ toRadians(place\_B.get\_longitude());}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{double}\ dlat\ =\ lat\_B\ -\/\ lat\_A;}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{double}\ dlon\ =\ lon\_B\ -\/\ lon\_A;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ std::sin(dlat\ /\ 2)\ *\ std::sin(dlat\ /\ 2)\ +\ std::cos(lat\_A)\ *\ std::cos(lat\_B)\ *\ std::sin(dlon\ /\ 2)\ *\ std::sin(dlon\ /\ 2);}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{double}\ c\ =\ 2\ *\ std::atan2(std::sqrt(a),\ std::sqrt(1\ -\/\ a));}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ EARTH\_RADIUS\_KM\ *\ c;}
 \DoxyCodeLine{00248\ }
-\DoxyCodeLine{00249\ \ \ \ \ visited[start\_id]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00250\ \ \ \ \ q.push(start\_id);}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordflow}{return}\ distance;}
+\DoxyCodeLine{00250\ \}}
 \DoxyCodeLine{00251\ }
-\DoxyCodeLine{00252\ \ \ \ \ util\_graph.add\_place(graph.get\_place(start\_id));}
-\DoxyCodeLine{00253\ }
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{while}\ (!q.empty())\ \{}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ q.front();}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ q.pop();}
-\DoxyCodeLine{00257\ }
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ neighbor\ :\ graph.findVertex(graph.get\_place(current))-\/>getAdj())}
-\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ util\_graph.add\_place(neighbor.getDest()-\/>getInfo());}
-\DoxyCodeLine{00261\ }
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_connection}{Connection}}\ new\_con\ =\ \mbox{\hyperlink{class_connection}{Connection}}(current,\ neighbor.getDest()-\/>getInfo().get\_id(),\ neighbor.getWeight());}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ util\_graph.add\_connection(new\_con,0);}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(neighbor.getDest()-\/>getInfo().get\_id()\ ==\ start\_id)}
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!visited[neighbor.getDest()-\/>getInfo().get\_id()])}
-\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ visited[neighbor.getDest()-\/>getInfo().get\_id()]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.push(neighbor.getDest()-\/>getInfo().get\_id());}
-\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00276\ \ \ \ \ \}}
-\DoxyCodeLine{00277\ }
-\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00279\ \}}
-\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00252\ std::unordered\_map<int,bool>\ set\_not\_visited(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph)}
+\DoxyCodeLine{00253\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ std::unordered\_map<int,bool>\ visited;}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ k\ :\ graph.getVertexSet())}
+\DoxyCodeLine{00257\ \ \ \ \ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ visited[k-\/>getInfo().get\_id()]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{return}\ visited;}
+\DoxyCodeLine{00262\ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_tarefas_8h_ac616606aeb1aaf22eae0d4fcfc3653d3}{exists\_path}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ util\_graph\ ,\ \textcolor{keywordtype}{int}\ start\_id)}
+\DoxyCodeLine{00265\ \{}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00272\ \ \ \ \ unordered\_map<int,\ bool>\ visited\ =\ set\_not\_visited(graph);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ graph.getNumVertex();}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\_id\ <\ 0\ ||\ start\_id\ >=\ n)\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Invalid\ start\ ID"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00278\ \ \ \ \ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ std::queue<int>\ q;}
 \DoxyCodeLine{00281\ }
-\DoxyCodeLine{00282\ std::vector<int>\ nearestNeighbor(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\ \textcolor{keywordtype}{int}\ start)\ \{}
-\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keywordtype}{int}\ numCities\ =\ graph.getNumVertex();}
-\DoxyCodeLine{00284\ \ \ \ \ std::unordered\_map<int,bool>\ visited\ =\ set\_not\_visited(graph);}
-\DoxyCodeLine{00285\ \ \ \ \ std::vector<int>\ tour;}
+\DoxyCodeLine{00282\ \ \ \ \ visited[start\_id]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00283\ \ \ \ \ q.push(start\_id);}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ util\_graph.add\_place(graph.get\_place(start\_id));}
 \DoxyCodeLine{00286\ }
-\DoxyCodeLine{00287\ }
-\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ start;}
-\DoxyCodeLine{00289\ \ \ \ \ visited[current]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00290\ \ \ \ \ tour.push\_back(current);}
-\DoxyCodeLine{00291\ }
-\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numCities\ -\/\ 1;\ ++i)\ \{}
-\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nearestCity\ =\ -\/1;}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ minDistance\ =\ std::numeric\_limits<double>::max();}
-\DoxyCodeLine{00295\ }
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ nearest\ unvisited\ city}}
-\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ numCities;\ ++j)\ \{}
-\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[j])\ \{}
-\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ haversine(graph.get\_place(current),\ graph.get\_place(j));}
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ <\ minDistance)\ \{}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ minDistance\ =\ dist;}
-\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nearestCity\ =\ j;}
-\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00306\ }
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearestCity\ ==\ -\/1)\ \{}
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ nearestCity\ =\ start;}
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordflow}{while}\ (!q.empty())\ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ q.front();}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ q.pop();}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ neighbor\ :\ graph.findVertex(graph.get\_place(current))-\/>getAdj())}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ util\_graph.add\_place(neighbor.getDest()-\/>getInfo());}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_connection}{Connection}}\ new\_con\ =\ \mbox{\hyperlink{class_connection}{Connection}}(current,\ neighbor.getDest()-\/>getInfo().get\_id(),\ neighbor.getWeight());}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ util\_graph.add\_connection(new\_con,0);}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(neighbor.getDest()-\/>getInfo().get\_id()\ ==\ start\_id)}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!visited[neighbor.getDest()-\/>getInfo().get\_id()])}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ visited[neighbor.getDest()-\/>getInfo().get\_id()]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.push(neighbor.getDest()-\/>getInfo().get\_id());}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \}}
 \DoxyCodeLine{00310\ }
-\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ current\ =\ nearestCity;}
-\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ visited[current]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ tour.push\_back(current);}
-\DoxyCodeLine{00314\ \ \ \ \ \}}
-\DoxyCodeLine{00315\ }
-\DoxyCodeLine{00316\ \ \ \ \ \textcolor{comment}{//\ Return\ to\ the\ starting\ city\ to\ complete\ the\ tour}}
-\DoxyCodeLine{00317\ \ \ \ \ tour.push\_back(start);}
-\DoxyCodeLine{00318\ }
-\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keywordflow}{return}\ tour;}
-\DoxyCodeLine{00320\ \}}
-\DoxyCodeLine{00321\ }
-\DoxyCodeLine{00322\ }
-\DoxyCodeLine{00323\ std::vector<int>\ destroy(vector<int>\ current\_sol,\textcolor{keywordtype}{double}\ rat)}
-\DoxyCodeLine{00324\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00312\ \}}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_ab04dc70ba13cff0c5a78748c343e38a5}{nearestNeighbor}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\ \textcolor{keywordtype}{int}\ start)}
+\DoxyCodeLine{00316\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{int}\ numCities\ =\ graph.getNumVertex();}
+\DoxyCodeLine{00323\ \ \ \ \ std::unordered\_map<int,bool>\ visited\ =\ set\_not\_visited(graph);}
+\DoxyCodeLine{00324\ \ \ \ \ std::vector<int>\ tour;}
 \DoxyCodeLine{00325\ }
-\DoxyCodeLine{00326\ \ \ \ \ std::vector<int>\ partial\_sol\ =\ current\_sol;}
-\DoxyCodeLine{00327\ }
-\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keywordtype}{int}\ numNodesToRemove\ =\ rat\ *\ current\_sol.size();}
-\DoxyCodeLine{00329\ }
-\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numNodesToRemove;\ ++i)\ \{}
-\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ indexToRemove\ =\ rand()\ \%\ partial\_sol.size();}
-\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ partial\_sol.erase(partial\_sol.begin()\ +\ indexToRemove);}
-\DoxyCodeLine{00333\ \ \ \ \ \}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ start;}
+\DoxyCodeLine{00328\ \ \ \ \ visited[current]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00329\ \ \ \ \ tour.push\_back(current);}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numCities\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nearestCity\ =\ -\/1;}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ minDistance\ =\ std::numeric\_limits<double>::max();}
 \DoxyCodeLine{00334\ }
-\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keywordflow}{return}\ partial\_sol;}
-\DoxyCodeLine{00336\ \}}
-\DoxyCodeLine{00337\ }
-\DoxyCodeLine{00338\ std::vector<int>\ repair(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\ vector<int>\ partial\_sol)}
-\DoxyCodeLine{00339\ \{}
-\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{int}\ startNode\ =\ partial\_sol.back();}
-\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordflow}{return}\ nearestNeighbor(graph,\ startNode);}
-\DoxyCodeLine{00342\ \}}
-\DoxyCodeLine{00343\ }
-\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ nearest\ unvisited\ city}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ numCities;\ ++j)\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[j])\ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ haversine(graph.get\_place(current),\ graph.get\_place(j));}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ <\ minDistance)\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ minDistance\ =\ dist;}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nearestCity\ =\ j;}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00345\ }
-\DoxyCodeLine{00346\ }
-\DoxyCodeLine{00347\ std::vector<int>\ tsp\_realworld(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \textcolor{keywordtype}{int}\ start\_id,\ \textcolor{keywordtype}{int}\ num\_iterations,\ \textcolor{keywordtype}{double}\ rat)}
-\DoxyCodeLine{00348\ \{}
-\DoxyCodeLine{00349\ \ \ \ \ std::vector<int>\ current\_solution;}
-\DoxyCodeLine{00350\ }
-\DoxyCodeLine{00351\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ utility\ graph\ (if\ needed)\ -\/\ check\ if\ this\ is\ necessary}}
-\DoxyCodeLine{00352\ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ util\_graph;}
-\DoxyCodeLine{00353\ }
-\DoxyCodeLine{00354\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ a\ path\ exists\ from\ the\ starting\ node\ to\ itself}}
-\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keywordflow}{if}\ (exists\_path(graph,\ util\_graph,\ start\_id))}
-\DoxyCodeLine{00356\ \ \ \ \ \{}
-\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ an\ initial\ solution\ using\ the\ Nearest\ Neighbor\ algorithm}}
-\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ current\_solution\ =\ nearestNeighbor(graph,\ start\_id);}
-\DoxyCodeLine{00359\ }
-\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ local\ search\ for\ improvement}}
-\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_iterations;\ i++)}
-\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ current\ solution\ to\ create\ a\ partial\ solution}}
-\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ partial\_sol\ =\ destroy(\ current\_solution,rat);}
-\DoxyCodeLine{00365\ }
-\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Repair\ the\ partial\ solution}}
-\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ repaired\_sol\ =\ repair(graph,\ partial\_sol);}
-\DoxyCodeLine{00368\ }
-\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compare\ the\ total\ distances\ of\ the\ repaired\ solution\ and\ partial\ solution}}
-\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (calculate\_total\_distance(graph,\ repaired\_sol)\ <\ calculate\_total\_distance(graph,\ current\_solution))}
-\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\_solution\ =\ repaired\_sol;}
-\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00375\ \ \ \ \ \}}
-\DoxyCodeLine{00376\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00377\ \ \ \ \ \{}
-\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Output\ an\ error\ message\ if\ no\ path\ exists\ from\ the\ starting\ node\ to\ itself}}
-\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error:\ No\ path\ exists\ from\ the\ starting\ node\ -\/\ "{}}\ <<\ start\_id\ <<\ \textcolor{stringliteral}{"{}\ to\ itself."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearestCity\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ nearestCity\ =\ start;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ current\ =\ nearestCity;}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ visited[current]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ tour.push\_back(current);}
+\DoxyCodeLine{00353\ \ \ \ \ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{comment}{//\ Return\ to\ the\ starting\ city\ to\ complete\ the\ tour}}
+\DoxyCodeLine{00356\ \ \ \ \ tour.push\_back(start);}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keywordflow}{return}\ tour;}
+\DoxyCodeLine{00359\ \}}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_a36b74f0d1f4c36436f744416753a6476}{destroy}}(vector<int>\ current\_sol,\textcolor{keywordtype}{double}\ rat)}
+\DoxyCodeLine{00363\ \{}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00370\ \ \ \ \ std::vector<int>\ partial\_sol\ =\ current\_sol;}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordtype}{int}\ numNodesToRemove\ =\ rat\ *\ current\_sol.size();}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numNodesToRemove;\ ++i)\ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ indexToRemove\ =\ rand()\ \%\ partial\_sol.size();}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (partial\_sol[indexToRemove]\ ==\ partial\_sol.front())\ \{}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ indexToRemove\ =\ rand()\ \%\ partial\_sol.size();}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ partial\_sol.erase(partial\_sol.begin()\ +\ indexToRemove);}
 \DoxyCodeLine{00380\ \ \ \ \ \}}
 \DoxyCodeLine{00381\ }
-\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordflow}{return}\ current\_solution;}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordflow}{return}\ partial\_sol;}
 \DoxyCodeLine{00383\ \}}
 \DoxyCodeLine{00384\ }
-\DoxyCodeLine{00385\ \textcolor{keywordtype}{void}\ printTspBacktrack(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \{}
-\DoxyCodeLine{00386\ \ \ \ \ vector<Place>\ result\ =\ tspBacktrack(graph);}
-\DoxyCodeLine{00387\ \ \ \ \ vector<int>\ ids;}
-\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ a\ :\ result)\ \{}
-\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ std::cout<<a.get\_id()<<\textcolor{stringliteral}{"{}\ -\/>\ "{}};}
-\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ ids.push\_back(a.get\_id());}
-\DoxyCodeLine{00391\ \ \ \ \ \}}
-\DoxyCodeLine{00392\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Total\ distance:\ "{}}<<\ calculate\_total\_distance(graph,\ ids);}
-\DoxyCodeLine{00393\ }
-\DoxyCodeLine{00394\ }
-\DoxyCodeLine{00395\ \}}
+\DoxyCodeLine{00385\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_a48ccec558556231820d0197c2102aa4e}{repair}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\ vector<int>\ partial\_sol)}
+\DoxyCodeLine{00386\ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{int}\ startNode\ =\ partial\_sol.back();}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_tarefas_8h_ab04dc70ba13cff0c5a78748c343e38a5}{nearestNeighbor}}(graph,\ startNode);}
+\DoxyCodeLine{00394\ \}}
+\DoxyCodeLine{00395\ }
 \DoxyCodeLine{00396\ }
 \DoxyCodeLine{00397\ }
 \DoxyCodeLine{00398\ }
-\DoxyCodeLine{00399\ }
-\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00399\ std::vector<int>\ \mbox{\hyperlink{_tarefas_8h_a204cf9fd17ce3f7093d56bcccb120d58}{tsp\_realworld}}(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph,\ \textcolor{keywordtype}{int}\ start\_id,\ \textcolor{keywordtype}{int}\ num\_iterations,\ \textcolor{keywordtype}{double}\ rat)}
+\DoxyCodeLine{00400\ \{}
 \DoxyCodeLine{00401\ }
-\DoxyCodeLine{00402\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TAREFAS\_H}}
+\DoxyCodeLine{00407\ \ \ \ \ std::vector<int>\ current\_solution;}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ utility\ graph\ (if\ needed)\ -\/\ check\ if\ this\ is\ necessary}}
+\DoxyCodeLine{00410\ \ \ \ \ \mbox{\hyperlink{class_world_graph}{WorldGraph}}\ util\_graph;}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ a\ path\ exists\ from\ the\ starting\ node\ to\ itself}}
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_tarefas_8h_ac616606aeb1aaf22eae0d4fcfc3653d3}{exists\_path}}(graph,\ util\_graph,\ start\_id))}
+\DoxyCodeLine{00414\ \ \ \ \ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ an\ initial\ solution\ using\ the\ Nearest\ Neighbor\ algorithm}}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ current\_solution\ =\ \mbox{\hyperlink{_tarefas_8h_ab04dc70ba13cff0c5a78748c343e38a5}{nearestNeighbor}}(graph,\ start\_id);}
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ local\ search\ for\ improvement}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_iterations;\ i++)}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ja\ arranjei\ se\ entretanto\ voltares\ fui\ buscar\ alguma\ coisa\ pra\ comer}}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ current\ solution\ to\ create\ a\ partial\ solution}}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ partial\_sol\ =\ \mbox{\hyperlink{_tarefas_8h_a36b74f0d1f4c36436f744416753a6476}{destroy}}(\ current\_solution,rat);}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Repair\ the\ partial\ solution}}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ repaired\_sol\ =\ \mbox{\hyperlink{_tarefas_8h_a48ccec558556231820d0197c2102aa4e}{repair}}(graph,\ partial\_sol);}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compare\ the\ total\ distances\ of\ the\ repaired\ solution\ and\ partial\ solution}}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (calculate\_total\_distance(graph,\ repaired\_sol)\ <\ calculate\_total\_distance(graph,\ current\_solution))}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\_solution\ =\ repaired\_sol;}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00434\ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00436\ \ \ \ \ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Output\ an\ error\ message\ if\ no\ path\ exists\ from\ the\ starting\ node\ to\ itself}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error:\ No\ path\ exists\ from\ the\ starting\ node\ -\/\ "{}}\ <<\ start\_id\ <<\ \textcolor{stringliteral}{"{}\ to\ itself."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00439\ \ \ \ \ \}}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \ \ \ \ \textcolor{keywordflow}{return}\ current\_solution;}
+\DoxyCodeLine{00442\ \}}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \textcolor{keywordtype}{void}\ printTspBacktrack(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \{}
+\DoxyCodeLine{00445\ \ \ \ \ vector<Place>\ result\ =\ \mbox{\hyperlink{_tarefas_8h_aefe08b04087cff80befa0c1445d9f847}{tspBacktrack}}(graph);}
+\DoxyCodeLine{00446\ \ \ \ \ vector<int>\ ids;}
+\DoxyCodeLine{00447\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ a\ :\ result)\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ std::cout<<a.get\_id()<<\textcolor{stringliteral}{"{}\ -\/>\ "{}};}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ ids.push\_back(a.get\_id());}
+\DoxyCodeLine{00450\ \ \ \ \ \}}
+\DoxyCodeLine{00451\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Total\ distance:\ "{}}<<\ calculate\_total\_distance(graph,\ ids);}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \}}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \textcolor{keywordtype}{void}\ printTriangular(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\&\ graph)\ \{}
+\DoxyCodeLine{00457\ \ \ \ \ vector<int>\ result\ =\ \mbox{\hyperlink{_tarefas_8h_afa43e94154b7fb88a0382b86999a6cfd}{tsp\_triangular\_aprox}}(graph);}
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ a\ :\ result)\ \{}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ std::cout\ <<\ a\ <<\ \textcolor{stringliteral}{"{}\ -\/>\ "{}};}
+\DoxyCodeLine{00460\ \ \ \ \ \}}
+\DoxyCodeLine{00461\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Total\ distance:\ "{}}<<\ calculate\_total\_distance(graph,\ result);}
+\DoxyCodeLine{00462\ \}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \textcolor{keywordtype}{void}\ print\_tsp\_simulated\_annealing(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\ \textcolor{keywordtype}{double}\ temp,\ \textcolor{keywordtype}{double}\ cooling,\ \textcolor{keywordtype}{int}\ iterations)\ \{}
+\DoxyCodeLine{00465\ \ \ \ \ vector<int>\ result\ =\ \mbox{\hyperlink{_tarefas_8h_ad60fdf4345973ba3339212d96e417618}{tsp\_simulated\_annealing}}(graph,\ temp,\ cooling,\ iterations);}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ a\ :\ result)\ \{}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ std::cout\ <<\ a\ <<\ \textcolor{stringliteral}{"{}\ -\/>\ "{}};}
+\DoxyCodeLine{00468\ \ \ \ \ \}}
+\DoxyCodeLine{00469\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Total\ distance:\ "{}}\ <<\ calculate\_total\_distance(graph,\ result);}
+\DoxyCodeLine{00470\ }
+\DoxyCodeLine{00471\ \}}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \textcolor{keywordtype}{void}\ print\_tsp\_realworld(\mbox{\hyperlink{class_world_graph}{WorldGraph}}\ graph,\ \textcolor{keywordtype}{int}\ startId,\ \textcolor{keywordtype}{int}\ iterations,\ \textcolor{keywordtype}{double}\ ratio)\ \{}
+\DoxyCodeLine{00474\ \ \ \ \ vector<int>\ result\ =\ \mbox{\hyperlink{_tarefas_8h_a204cf9fd17ce3f7093d56bcccb120d58}{tsp\_realworld}}(graph,\ startId,\ iterations,\ ratio);}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ a\ :\ result)\ \{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ std::cout\ <<\ a\ <<\ \textcolor{stringliteral}{"{}\ -\/>\ "{}};}
+\DoxyCodeLine{00477\ \ \ \ \ \}}
+\DoxyCodeLine{00478\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Total\ distance:\ "{}}\ <<\ calculate\_total\_distance(graph,\ result);}
+\DoxyCodeLine{00479\ }
+\DoxyCodeLine{00480\ \}}
+\DoxyCodeLine{00481\ }
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ }
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TAREFAS\_H}}
 
 \end{DoxyCode}
