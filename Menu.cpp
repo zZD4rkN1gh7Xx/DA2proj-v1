@@ -15,12 +15,44 @@ Menu::Menu() {
     this->current_graph = WorldGraph();
 }
 
+void Menu::DisplayOptions() {
+    std::string type;
+    std::cout<< std::endl << "|" << " Travelling Salesperson Problem (page 1) " << "|" << std::endl << std::endl;
+    std::cout<< "1 - Shipping (Toy)" << std::endl;
+    std::cout<< "2 - Stadiums (Toy)" << std::endl;
+    std::cout<< "3 - Tourism (Toy)" << std::endl;
+    std::cout<< "4 - Fully Connected 25 edges" << std::endl;
+    std::cout<< "5 - Fully Connected 50 edges" << std::endl;
+    std::cout<< "6 - Fully Connected 75 edges" << std::endl;
+    std::cout<< "7 - Fully Connected 100 edges" << std::endl;
+    std::cout<< "8 - Fully Connected 200 edges" << std::endl;
+    std::cout<< "9 - Fully Connected 300 edges" << std::endl;
+    std::cout<< "0 - More Options" << std::endl;
+}
+
+void Menu::DisplayOptionsMore() {
+    std::string type;
+    std::cout<< std::endl << "|" << " Travelling Salesperson Problem (page 2) " << "|" << std::endl << std::endl;
+    std::cout<< "1 - Fully Connected 400 edges" << std::endl;
+    std::cout<< "2 - Fully Connected 500 edges" << std::endl;
+    std::cout<< "3 - Fully Connected 600 edges" << std::endl;
+    std::cout<< "4 - Fully Connected 700 edges" << std::endl;
+    std::cout<< "5 - Fully Connected 800 edges" << std::endl;
+    std::cout<< "6 - Fully Connected 900 edges" << std::endl;
+    std::cout<< "7 - Real World Graph 1" << std::endl;
+    std::cout<< "8 - Real World Graph 2" << std::endl;
+    std::cout<< "9 - Real World Graph 3" << std::endl;
+    std::cout<< "0 - Go Back" << std::endl;
+}
+
+
 void Menu::DisplayAlgorithm(WorldGraph graph)
 {
     std::cout<< std::endl << "|" << " Travelling Salesperson Problem " << "|" << std::endl << std::endl;
     std::cout<< "1 - Backtracking Algorithm (4.1)" << std::endl;
     std::cout<< "2 - Triangular Approximation Heuristic (4.2)" << std::endl;
     std::cout<< "3 - Simulated Annealing Heuristic (4.3)" << std::endl;
+    std::cout<< "4 - Large Neighbour Search (4.4)" << std::endl;
 
     std::string ans;
     while(true) {
@@ -28,7 +60,7 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
         std::cin>>ans;
         std::cout << std::endl;
         if (ans == "1") {
-            tspBacktrack(graph);
+            printTspBacktrack(graph);
         }
         else if (ans == "2") {
             tsp_triangular_aprox(graph);
@@ -44,6 +76,19 @@ void Menu::DisplayAlgorithm(WorldGraph graph)
             std::cout << std::endl << std::endl;
 
             tsp_simulated_annealing(graph, stod(temp), stod(cooling), stoi(iterations));
+        }
+
+        else if (ans == "4") {
+            std::string startId, iterations, ratio;
+            std::cout << "Input starting node id: ";
+            std::cin>>startId;
+            std::cout << std::endl << "Input iterations (10 recommended): ";
+            std::cin>>iterations;
+            std::cout << std::endl << "Input ratio (between 0 and 1): ";
+            std::cin>>ratio;
+            std::cout << std::endl << std::endl;
+
+            tsp_realworld(graph, stoi(startId), stoi(iterations), stod(ratio));
         }
         else {
             std::cout << "Invalid option, please try again." << std::endl;
@@ -76,22 +121,22 @@ void Menu::MainMenu() {
             LoadGraph("../files/Toy-Graphs/Toy-Graphs/tourism.csv");
         }
         else if (ans == "4") {
-            LoadFullGraph(25, TODO);
+            LoadFullGraph(25);
         }
         else if (ans == "5") {
-            LoadFullGraph(50, TODO);
+            LoadFullGraph(50);
         }
         else if (ans == "6") {
-            LoadFullGraph(75, TODO);
+            LoadFullGraph(75);
         }
         else if (ans == "7") {
-            LoadFullGraph(100, TODO);
+            LoadFullGraph(100);
         }
         else if (ans == "8") {
-            LoadFullGraph(200, TODO);
+            LoadFullGraph(200);
         }
         else if (ans == "9") {
-            LoadFullGraph(300, TODO);
+            LoadFullGraph(300);
         }
         else if (ans == "0") {
             DisplayOptionsMore();
@@ -168,35 +213,6 @@ void Menu::LoadRealGraph(int graphNumber) {
     DisplayAlgorithm(current_graph);
 }
 
-void Menu::DisplayOptions() {
-    std::string type;
-    std::cout<< std::endl << "|" << " What graph? " << "|" << std::endl << std::endl;
-    std::cout<< "1 - Shipping (Toy)" << std::endl;
-    std::cout<< "2 - Stadiums (Toy)" << std::endl;
-    std::cout<< "3 - Tourism (Toy)" << std::endl;
-    std::cout<< "4 - Fully Connected 25 edges" << std::endl;
-    std::cout<< "5 - Fully Connected 50 edges" << std::endl;
-    std::cout<< "6 - Fully Connected 75 edges" << std::endl;
-    std::cout<< "7 - Fully Connected 100 edges" << std::endl;
-    std::cout<< "8 - Fully Connected 200 edges" << std::endl;
-    std::cout<< "9 - Fully Connected 300 edges" << std::endl;
-    std::cout<< "0 - More Options" << std::endl;
-}
-
-void Menu::DisplayOptionsMore() {
-    std::string type;
-    std::cout<< std::endl << "|" << " What graph? " << "|" << std::endl << std::endl;
-    std::cout<< "1 - Fully Connected 400 edges" << std::endl;
-    std::cout<< "2 - Fully Connected 500 edges" << std::endl;
-    std::cout<< "3 - Fully Connected 600 edges" << std::endl;
-    std::cout<< "4 - Fully Connected 700 edges" << std::endl;
-    std::cout<< "5 - Fully Connected 800 edges" << std::endl;
-    std::cout<< "6 - Fully Connected 900 edges" << std::endl;
-    std::cout<< "7 - Real World Graph 1" << std::endl;
-    std::cout<< "8 - Real World Graph 2" << std::endl;
-    std::cout<< "9 - Real World Graph 3" << std::endl;
-    std::cout<< "0 - Go Back" << std::endl;
-}
 
 bool Menu::ToMain() {
     std::string ans;

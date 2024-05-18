@@ -49,6 +49,7 @@ std::vector<Place> tspBacktrack(WorldGraph& graph) {
 }
 
 
+
 WorldGraph PrimMST(WorldGraph& graph) // opa como vamos sempre começar pelo node 0 acho que ta chill nao por por onde e que o algoritmo começa ne?
 {
     graph.set_all_unvisited(); // dar  set a todos os nodes a unvisited
@@ -132,7 +133,7 @@ std::vector<int> tsp_triangular_aprox(WorldGraph& graph)
     return triangular_aprox;
 }
 
-long calculate_total_distance(WorldGraph& graph, const std::vector<int>& path)
+double calculate_total_distance(WorldGraph& graph, const std::vector<int>& path)
 {
     double total_distance = 0.0;
 
@@ -379,6 +380,18 @@ std::vector<int> tsp_realworld(WorldGraph& graph, int start_id, int num_iteratio
     }
 
     return current_solution;
+}
+
+void printTspBacktrack(WorldGraph& graph) {
+    vector<Place> result = tspBacktrack(graph);
+    vector<int> ids;
+    for (auto a : result) {
+        std::cout<<a.get_id()<<" -> ";
+        ids.push_back(a.get_id());
+    }
+    cout << "Total distance: "<< calculate_total_distance(graph, ids);
+
+
 }
 
 
